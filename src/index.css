@@ -1,0 +1,24 @@
+:root{
+  --background-color:#323643;
+  --primary-text-color:#FFFFFF;
+  --secundary-text-color:#B4B4B4;
+  --card-background-color-1:#606470;
+  --card-background-color-1:#494C54;
+  --primary-button-background-color:#0066FF;
+  --input-box-background-color:#A4A4A4;
+  --header-background-color:#0F4C75;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
