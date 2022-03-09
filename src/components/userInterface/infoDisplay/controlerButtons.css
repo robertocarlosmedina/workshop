@@ -1,0 +1,11 @@
+.controler-buttons {
+  position: relative;
+  margin-left: -4rem;
+}
+.controler-buttons li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 1.5rem;
+}

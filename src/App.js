@@ -1,8 +1,9 @@
+import FrontPage from './components/userInterface/frontPage'
 
 function App() {
   return (
     <div className="App">
-      <p>header</p>
+      <FrontPage />
     </div>
   );
 }

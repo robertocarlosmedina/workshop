@@ -3,10 +3,13 @@
   --primary-text-color:#FFFFFF;
   --secundary-text-color:#B4B4B4;
   --card-background-color-1:#606470;
-  --card-background-color-1:#494C54;
+  --card-background-color-2:#494C54;
   --primary-button-background-color:#0066FF;
+  --second-button-background-color:#3282B8;
   --input-box-background-color:#A4A4A4;
   --header-background-color:#0F4C75;
+  --card-border-radius:.6rem;
+  --button-border-radius:.3rem;
 }
 
 body {
@@ -16,6 +19,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-text-color);
+  background-color: var(--background-color);
 }
 
 code {

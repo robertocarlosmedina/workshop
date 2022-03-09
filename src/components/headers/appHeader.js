@@ -1,9 +1,23 @@
-import React from 'react'
+import React from "react"
+import { FaCalendarAlt } from 'react-icons/fa'
+import { RiTeamFill } from 'react-icons/ri'
 
-function appHeader() {
+import "./appHeader.css";
+
+function AppHeader() {
   return (
-    <div>appHeader</div>
-  )
+    <header>
+      <h1 className="app-tittle">Workshop</h1>
+      <ul className="header-menu">
+        <li>
+          <RiTeamFill />
+        </li>
+        <li>
+          <FaCalendarAlt />
+        </li>
+      </ul>
+    </header>
+  );
 }
 
-export default appHeader
+export default AppHeader

@@ -1,0 +1,19 @@
+.app-tittle {
+  font-size: min(1rem, 1.5rem);
+  float: left;
+  position: absolute;
+  top: 0.3rem;
+  left: min(8%, 3rem);
+}
+
+.header-menu {
+  position: absolute;
+  right: min(8%, 3rem);
+}
+
+.header-menu li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  margin-left: 1.2rem;
+}

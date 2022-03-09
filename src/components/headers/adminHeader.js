@@ -1,9 +1,15 @@
 import React from 'react'
 
-function adminHeader() {
+function AdminHeader() {
   return (
-    <div>adminHeader</div>
+    <header>
+      <h1>Workshop</h1>
+      <ul>
+        <li>teams</li>
+        <li>Calendar</li>
+      </ul>
+    </header>
   )
 }
 
-export default adminHeader
+export default AdminHeader
