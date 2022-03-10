@@ -1,0 +1,17 @@
+.carrossel-position-controler {
+  margin-left: -3rem;
+}
+
+.positional-circle {
+  width: max(.4rem, .7rem);
+  height: max(.4rem, .7rem);
+  border-radius: 50%;
+  background-color: var(--secundary-text-color);
+  list-style: none;
+  display: inline-block;
+  margin-left: 0.6rem;
+}
+
+#active {
+  background-color: var(--primary-text-color);
+}

@@ -10,9 +10,9 @@
 .ui_display_card {
   background-color: var(--card-background-color-1);
   width: 80%;
-  height: 3.5rem;
+  max-width: 60rem;
   position: relative;
-  margin: 30% auto;
+  margin: min(10rem, 28vh) auto;
   padding: 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;

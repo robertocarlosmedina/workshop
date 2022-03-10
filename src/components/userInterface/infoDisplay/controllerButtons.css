@@ -1,3 +1,8 @@
+.ilustration{
+  width: min(13rem, 50%);
+  filter:drop-shadow(.5rem .5rem 1rem rgb(43, 42, 43));
+}
+
 .controler-buttons {
   position: relative;
   margin-left: -4rem;
@@ -6,6 +11,10 @@
   position: relative;
   list-style: none;
   display: inline-block;
-  margin: 0 auto;
+  margin: .3rem auto;
   margin-left: 1.5rem;
+}
+
+.controler-button{
+  width: 6rem;
 }
