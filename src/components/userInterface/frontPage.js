@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, useRef, React } from "react";
 
 import UICards from "../uicards/uiCards";
 import AppHeader from "../headers/appHeader";
@@ -10,7 +10,8 @@ import digitalPresentationIlustration from "../../assets/ilustrations/digital-pr
 import subscribeBroIlustration from "../../assets/ilustrations/subscriber-bro.png";
 
 function FrontPage() {
-  const [positionIndex, setPositionIndex] = useState(1);
+  const [positionIndex, setPositionIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState("top-bottom-animation")
   const carroselPartes = [
     {
       id: 1,
@@ -32,8 +33,23 @@ function FrontPage() {
       text: "blabLet’s learn and share Knowleght... Let’s learn and share Knowleght... labla",
       ilustrationUrl: subscribeBroIlustration,
       altText: "",
-    },
+    }
   ];
+
+  const changePositionIndexANDanimation = ( index ) =>{
+    const lastIndex = positionIndex
+    setPositionIndex(index)
+    console.log(`${lastIndex}, ${index}, ${parseInt(lastIndex) - parseInt(index)}`)
+    if(parseInt(lastIndex) - parseInt(index) < parseInt(index)){
+      setAnimationClass("right-left-animation")
+      console.log(`Firts: ${animationClass}`)
+    }
+    else{
+      setAnimationClass("left-right-animation")
+      console.log(`Secund: ${animationClass}`)
+
+    }
+  }
 
   return (
     <main>
@@ -45,16 +61,18 @@ function FrontPage() {
           ilustrationUrl={carroselPartes[positionIndex].ilustrationUrl}
           ilustrationDescription={carroselPartes[positionIndex].altText}
           textToDisplay={carroselPartes[positionIndex].text}
+          animationClass={animationClass}
         />
-        <p></p>
+        <p>{positionIndex}</p>
+        <p>{animationClass}</p>
         <PositionController
           currentIndex={positionIndex}
-          setPositionIndex={setPositionIndex}
+          changePositionIndexANDanimation={changePositionIndexANDanimation}
         />
 
         <ControllerButtons
           currentIndex={positionIndex}
-          setPositionIndex={setPositionIndex}
+          changePositionIndexANDanimation={changePositionIndexANDanimation}
         />
       </UICards>
     </main>

@@ -1,10 +1,55 @@
-.content-display{
-    text-align: center;
+.content-display {
+  text-align: center;
 }
 
-.desciption-text{
-    max-width: 20rem;
-    text-align: center;
-    margin: 0 auto;
-    font-size: max(.5rem, .95rem);
+.desciption-text {
+  max-width: 20rem;
+  text-align: center;
+  margin: 0 auto;
+  font-size: max(0.5rem, 0.95rem);
+}
+
+.top-bottom-animation {
+  animation: top-bottom-animation 2s both;
+}
+
+.right-left-animation {
+  animation: right-left-animation 2s both;
+}
+
+.left-right-animation {
+  animation: left-right-animation 2s both;
+}
+
+@keyframes top-bottom-animation {
+  from {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes right-left-animation {
+  from {
+    transform: translateX(3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes left-right-animation {
+  from {
+    transform: translateX(-3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
 }

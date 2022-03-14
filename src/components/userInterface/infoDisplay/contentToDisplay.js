@@ -1,16 +1,22 @@
 import React from "react";
 
-import './contentToDisplay.css'
+import "./contentToDisplay.css";
 
 function ContentToDisplay(props) {
+  const animationKeyFrame = `${props.animationClass} 2s both`;
   return (
-    <div className="content-display">
+    <div className='content-display'>
       <img
-        className='ilustration'
+        style={{ animation: "none", animation: animationKeyFrame }}
+        className={`ilustration`}
         src={props.ilustrationUrl}
         alt={props.ilustrationDescription}
       />
-      <p className="desciption-text">{props.textToDisplay}</p>
+      <p
+        className={`desciption-text`}
+        style={{ animation: animationKeyFrame }}>
+        {props.textToDisplay}
+      </p>
     </div>
   );
 }

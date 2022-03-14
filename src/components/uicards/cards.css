@@ -16,4 +16,5 @@
   padding: 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
+  overflow: hidden;
 }

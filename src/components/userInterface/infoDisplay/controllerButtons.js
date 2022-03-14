@@ -10,7 +10,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.currentIndex + 1);
+                props.changePositionIndexANDanimation(props.currentIndex + 1);
               }}
               className='secundary-button controler-button  button'>
               Next
@@ -25,7 +25,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.currentIndex - 1);
+                props.changePositionIndexANDanimation(props.currentIndex - 1);
               }}
               className='secundary-button controler-button button'>
               Back
@@ -34,7 +34,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.currentIndex + 1);
+                props.changePositionIndexANDanimation(props.currentIndex + 1);
               }}
               className='secundary-button controler-button button'>
               Next
@@ -49,7 +49,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.currentIndex - 1);
+                props.changePositionIndexANDanimation(props.currentIndex - 1);
               }}
               className='secundary-button controler-button button'>
               Back
@@ -64,7 +64,7 @@ function ControlerButtons(props) {
       );
       break;
     default:
-      props.setPositionIndex(0);
+      props.changePositionIndexANDanimation(0);
       return <button>Next</button>;
   }
 }

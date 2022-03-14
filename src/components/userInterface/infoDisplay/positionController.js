@@ -7,19 +7,19 @@ function PositionController(props) {
     <ul className='carrossel-position-controler'>
       <li
         onClick={() => {
-          props.setPositionIndex(0);
+          props.changePositionIndexANDanimation(0);
         }}
         className='positional-circle'
         id={props.currentIndex === 0 ? "active" : ""}></li>
       <li
         onClick={() => {
-          props.setPositionIndex(1);
+          props.changePositionIndexANDanimation(1);
         }}
         className='positional-circle'
         id={props.currentIndex === 1 ? "active" : ""}></li>
       <li
         onClick={() => {
-          props.setPositionIndex(2);
+          props.changePositionIndexANDanimation(2);
         }}
         className='positional-circle'
         id={props.currentIndex === 2 ? "active" : ""}></li>
