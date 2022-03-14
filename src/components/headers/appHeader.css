@@ -4,6 +4,7 @@
   position: absolute;
   top: 0.3rem;
   left: min(8%, 3rem);
+  z-index: 10;
 }
 
 .header-menu {

@@ -10,6 +10,7 @@
   --secondary-button-background-hover-color: #3b7196;
   --input-box-background-color: #a4a4a4;
   --header-background-color: #0f4c75;
+  --alert-notification-color:#d16a6a;
   --card-border-radius: 0.6rem;
   --button-border-radius: 0.3rem;
 }
@@ -71,4 +72,11 @@ code {
 
 .primary-button:hover {
   background-color: var(--primary-button-background-hover-color);
+}
+
+
+@media screen and (max-height: 512px) {
+  body{
+    overflow: auto;
+  }
 }

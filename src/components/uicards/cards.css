@@ -12,9 +12,21 @@
   width: 80%;
   max-width: 50rem;
   position: relative;
-  margin: min(10rem, 28vh) auto;
+  margin: min(9rem, 28vh) auto;
   padding: 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;
+}
+
+@media screen and (max-height: 512px) {
+  .ui-display-card{
+      margin-top: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 316px) {
+  .ui-display-card{
+      background-color: transparent;
+  }
 }

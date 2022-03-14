@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./controllerButtons.css";
 
@@ -6,28 +7,29 @@ function ControlerButtons(props) {
   switch (props.currentIndex) {
     case 0:
       return (
-        <ul className='controler-buttons'>
+        <ul className="controler-buttons">
           <li>
             <button
               onClick={() => {
                 props.changePositionIndexANDanimation(props.currentIndex + 1);
               }}
-              className='secundary-button controler-button  button'>
+              className="secundary-button controler-button  button"
+            >
               Next
             </button>
           </li>
         </ul>
       );
-      break;
     case 1:
       return (
-        <ul className='controler-buttons'>
+        <ul className="controler-buttons">
           <li>
             <button
               onClick={() => {
                 props.changePositionIndexANDanimation(props.currentIndex - 1);
               }}
-              className='secundary-button controler-button button'>
+              className="secundary-button controler-button button"
+            >
               Back
             </button>
           </li>
@@ -36,33 +38,35 @@ function ControlerButtons(props) {
               onClick={() => {
                 props.changePositionIndexANDanimation(props.currentIndex + 1);
               }}
-              className='secundary-button controler-button button'>
+              className="secundary-button controler-button button"
+            >
               Next
             </button>
           </li>
         </ul>
       );
-      break;
     case 2:
       return (
-        <ul className='controler-buttons'>
+        <ul className="controler-buttons">
           <li>
             <button
               onClick={() => {
                 props.changePositionIndexANDanimation(props.currentIndex - 1);
               }}
-              className='secundary-button controler-button button'>
+              className="secundary-button controler-button button"
+            >
               Back
             </button>
           </li>
           <li>
-            <button className='primary-button controler-button button'>
-              Register
-            </button>
+            <Link to="/registration">
+              <button className="primary-button controler-button button">
+                Register
+              </button>
+            </Link>
           </li>
         </ul>
       );
-      break;
     default:
       props.changePositionIndexANDanimation(0);
       return <button>Next</button>;

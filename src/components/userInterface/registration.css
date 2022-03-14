@@ -1,0 +1,51 @@
+.form-title {
+  font-size: min(5vh, 1rem);
+  margin: 1rem auto;
+  font-weight: bold;
+}
+
+.formulary {
+  margin-left: -4.5rem;
+  margin-top: 2rem;
+}
+
+.registration-form {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.form-item {
+  list-style: none;
+  display: inline-block;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: -1rem;
+}
+
+.form-item label{
+    float: left;
+    font-size: .75rem;
+}
+
+.form-item label span{
+    color:var(--alert-notification-color)
+}
+
+.resgistrion-input-field {
+  width: min(20vh, 20rem);
+  max-width: 20rem;
+  padding: .5rem .25rem .5rem .25rem;
+  background-color: var(--input-box-background-color);
+  border: none;
+  border-radius: var(--button-border-radius);
+  color: var(--primary-text-color);
+  color: var(--background-color);
+}
+
+.invalid{
+    border: 2px solid var(--alert-notification-color);
+}
+
+.ajust-button{
+    margin-left: 4.3rem;
+}

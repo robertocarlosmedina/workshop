@@ -9,18 +9,6 @@
   font-size: max(0.5rem, 0.95rem);
 }
 
-.top-bottom-animation {
-  animation: top-bottom-animation 2s both;
-}
-
-.right-left-animation {
-  animation: right-left-animation 2s both;
-}
-
-.left-right-animation {
-  animation: left-right-animation 2s both;
-}
-
 @keyframes top-bottom-animation {
   from {
     transform: translateY(-2rem);
@@ -43,7 +31,29 @@
   }
 }
 
+@keyframes right-left-animation-1 {
+  from {
+    transform: translateX(3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+
 @keyframes left-right-animation {
+  from {
+    transform: translateX(-3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+
+@keyframes left-right-animation-1 {
   from {
     transform: translateX(-3rem);
     opacity: 0;

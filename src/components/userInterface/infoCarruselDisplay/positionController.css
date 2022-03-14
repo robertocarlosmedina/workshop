@@ -3,8 +3,8 @@
 }
 
 .positional-circle {
-  width: max(.4rem, .7rem);
-  height: max(.4rem, .7rem);
+  width: max(0.4rem, 0.7rem);
+  height: max(0.4rem, 0.7rem);
   border-radius: 50%;
   background-color: var(--secundary-text-color);
   list-style: none;
@@ -14,4 +14,11 @@
 
 #active {
   background-color: var(--primary-text-color);
+}
+
+@media screen and (max-height: 512px) {
+  .positional-circle {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
 }
