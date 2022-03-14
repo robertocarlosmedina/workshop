@@ -45,6 +45,11 @@ code {
   transition: background-color 0.3s ease-in-out;
 }
 
+.ilustration{
+  width: min(13rem, 50%);
+  filter:drop-shadow(.5rem .5rem 1rem rgb(54, 54, 54));
+}
+
 .button:hover {
   transform: scale(1.05);
   cursor: pointer;

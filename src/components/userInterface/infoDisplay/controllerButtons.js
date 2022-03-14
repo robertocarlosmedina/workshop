@@ -3,14 +3,14 @@ import React from "react";
 import "./controllerButtons.css";
 
 function ControlerButtons(props) {
-  switch (props.current_index) {
+  switch (props.currentIndex) {
     case 0:
       return (
         <ul className='controler-buttons'>
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.current_index + 1);
+                props.setPositionIndex(props.currentIndex + 1);
               }}
               className='secundary-button controler-button  button'>
               Next
@@ -25,7 +25,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.current_index - 1);
+                props.setPositionIndex(props.currentIndex - 1);
               }}
               className='secundary-button controler-button button'>
               Back
@@ -34,7 +34,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.current_index + 1);
+                props.setPositionIndex(props.currentIndex + 1);
               }}
               className='secundary-button controler-button button'>
               Next
@@ -49,7 +49,7 @@ function ControlerButtons(props) {
           <li>
             <button
               onClick={() => {
-                props.setPositionIndex(props.current_index - 1);
+                props.setPositionIndex(props.currentIndex - 1);
               }}
               className='secundary-button controler-button button'>
               Back

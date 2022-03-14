@@ -1,0 +1,10 @@
+.content-display{
+    text-align: center;
+}
+
+.desciption-text{
+    max-width: 20rem;
+    text-align: center;
+    margin: 0 auto;
+    font-size: max(.5rem, .95rem);
+}

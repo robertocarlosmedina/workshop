@@ -10,19 +10,19 @@ function PositionController(props) {
           props.setPositionIndex(0);
         }}
         className='positional-circle'
-        id={props.current_index === 0 ? "active" : ""}></li>
+        id={props.currentIndex === 0 ? "active" : ""}></li>
       <li
         onClick={() => {
           props.setPositionIndex(1);
         }}
         className='positional-circle'
-        id={props.current_index === 1 ? "active" : ""}></li>
+        id={props.currentIndex === 1 ? "active" : ""}></li>
       <li
         onClick={() => {
           props.setPositionIndex(2);
         }}
         className='positional-circle'
-        id={props.current_index === 2 ? "active" : ""}></li>
+        id={props.currentIndex === 2 ? "active" : ""}></li>
     </ul>
   );
 }
