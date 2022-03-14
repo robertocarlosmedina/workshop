@@ -115,7 +115,7 @@ function Registration() {
             </p>
             <select
               onChange={schoolYearFieldHandler}
-              className="resgistrion-input-field"
+              className="resgistrion-input-field  selector"
             >
               <option value="1º Ano">1º Ano</option>
               <option value="2º Ano">2º Ano</option>
@@ -131,7 +131,7 @@ function Registration() {
             </p>
             <select
               onChange={participationTypeFieldHandler}
-              className="resgistrion-input-field"
+              className="resgistrion-input-field  selector"
             >
               <option value="Presential">Presential</option>
               <option value="Online">Online</option>
@@ -145,7 +145,7 @@ function Registration() {
             </p>
             <select
               onChange={degreeTypeFieldHandler}
-              className="resgistrion-input-field"
+              className="resgistrion-input-field selector"
             >
               <option value="Bachelor">Bachelor</option>
               <option value="Master">Master</option>

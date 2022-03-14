@@ -5,6 +5,7 @@
   top: 0.3rem;
   left: min(8%, 3rem);
   z-index: 10;
+  color: var(--primary-text-color);
 }
 
 .header-menu {

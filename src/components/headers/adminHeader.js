@@ -1,9 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function AdminHeader() {
+  const history = History()
+
+  const goToHome = () =>{
+    console.log("Okoko")
+    history.push("/")
+  }
   return (
     <header>
-      <h1>Workshop</h1>
+      <button onClick={goToHome}>Workshop</button>
       <ul>
         <li>teams</li>
         <li>Calendar</li>

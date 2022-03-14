@@ -38,15 +38,10 @@ function FrontPage() {
   const changePositionIndexANDanimation = (index) => {
     const lastIndex = positionIndex;
     setPositionIndex(index);
-    console.log(
-      `${lastIndex}, ${index}, ${parseInt(lastIndex) - parseInt(index)}`
-    );
     if (parseInt(lastIndex) - parseInt(index) < parseInt(index)) {
       checkDuobleSlideInSameDirection("right-left-animation");
-      console.log(`Firts: ${animationClass}`);
     } else {
       checkDuobleSlideInSameDirection("left-right-animation");
-      console.log(`Secund: ${animationClass}`);
     }
   };
 

@@ -10,10 +10,8 @@ function App() {
   return (
     <React.Fragment>
       <Routes>
-        <Route exact path="/" element={<FrontPage />} />
-      </Routes>
-      <Routes>
-        <Route exact path="/registration" element={<Registration />} />
+        <Route exact path={'/'} element={<FrontPage />} />
+        <Route exact path={'/registration'} element={<Registration />} />
       </Routes>
       <UICards card_name="header-card">
         <AppHeader />

@@ -32,7 +32,7 @@
 }
 
 .resgistrion-input-field {
-  width: min(20vh, 20rem);
+  width: 12rem;
   max-width: 20rem;
   padding: .5rem .25rem .5rem .25rem;
   background-color: var(--input-box-background-color);
@@ -42,10 +42,23 @@
   color: var(--background-color);
 }
 
+.selector{
+  width: 12.6rem;
+}
+
 .invalid{
     border: 2px solid var(--alert-notification-color);
 }
 
 .ajust-button{
     margin-left: 4.3rem;
+}
+
+@media screen and (max-width: 248px) {
+  .resgistrion-input-field{
+    width: 8rem;
+  }
+  .selector{
+    width: 8.8rem;
+  }
 }
