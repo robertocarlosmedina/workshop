@@ -28,6 +28,7 @@
 }
 
 .form-item label span{
+  font-weight: bold;
     color:var(--alert-notification-color)
 }
 

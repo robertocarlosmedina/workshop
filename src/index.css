@@ -10,7 +10,7 @@
   --secondary-button-background-hover-color: #3b7196;
   --input-box-background-color: #a4a4a4;
   --header-background-color: #0f4c75;
-  --alert-notification-color:#d16a6a;
+  --alert-notification-color:#ff2222;
   --card-border-radius: 0.6rem;
   --button-border-radius: 0.3rem;
 }
@@ -75,6 +75,15 @@ code {
   background-color: var(--primary-button-background-hover-color);
 }
 
+.link{
+  color:#0066ff;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.normal-text{
+  font-size: min(3vh, .9rem);
+}
 
 @media screen and (max-height: 512px) {
   body{
