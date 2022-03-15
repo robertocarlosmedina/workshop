@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate, browserHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import UICards from "../uicards/uiCards";
 

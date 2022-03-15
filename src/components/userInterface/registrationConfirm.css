@@ -1,0 +1,48 @@
+.personal-code {
+  width: min(20vh, 8rem);
+  margin: 0 auto;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: var(--card-background-color-2);
+  border-radius: var(--button-border-radius);
+  color: var(--alert-notification-color-2);
+  font-weight: bold;
+  letter-spacing: 0.12ch;
+}
+
+.information-text {
+  color: var(--secundary-text-color);
+}
+
+.information-text span {
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.participation-links {
+  margin-left: -3.5rem;
+}
+
+.participation-links li {
+  margin-left: 1rem;
+  display: inline-block;
+  padding: 0.6rem 0.6rem 0.4rem 0.6rem;
+  border-radius: 100%;
+  filter: drop-shadow(0.5rem 0.5rem 1rem rgb(73, 73, 73));
+  background-color: var(--input-box-background-color);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.participation-links li:hover {
+  transform: translateY(-0.2rem);
+}
+
+.participant-icons {
+  width: 1.5rem;
+}
+
+@media screen and (max-width: 316px) {
+  .ui-display-card {
+    margin-top: 5rem;
+  }
+}

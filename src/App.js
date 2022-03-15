@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import FrontPage from "./components/userInterface/frontPage";
 import Registration from "./components/userInterface/registration";

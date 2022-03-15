@@ -15,12 +15,10 @@ function UrlError404() {
         style={{ animation: "top-bottom-animation 2s both" }}
         className={`ilustration`}
         src={Error404}
-        alt='Error image ilustration'
+        alt='Error ilustration with the Not Found Code'
       />
       <p className='normal-text'>
-        Sorry, we couldn't find the page you're looking for.{" "}
-      </p>
-      <p className='normal-text'>
+        Sorry, we couldn't find the page you're looking for. <br />
         Try returning to the{" "}
         <Link className='link' to='/'>
           Homepage
