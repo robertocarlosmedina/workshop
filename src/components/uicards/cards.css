@@ -8,7 +8,6 @@
 }
 
 .ui-display-card {
-  background-color: var(--card-background-color-1);
   width: 80%;
   max-width: 50rem;
   position: relative;
@@ -17,27 +16,43 @@
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;
+  background-color: var(--card-background-color-1);
+  border: 1px solid #7c7c7cb0;
+}
+
+.ui-display-card-1 {
+  width: 80%;
+  max-width: 50rem;
+  position: relative;
+  margin: min(15vh, 5rem) auto;
+  padding: 1rem;
+  border-radius: var(--card-border-radius);
+  text-align: center;
+  overflow: hidden;
 }
 
 @media screen and (max-height: 512px) {
-  .ui-display-card{
-      margin-top: 4.5rem;
+  .ui-display-card {
+    margin-top: 4.5rem;
   }
 }
 
 @media screen and (max-width: 512px) {
-  body{
-    overflow:scroll;
+  body {
+    overflow: scroll;
   }
-  .ui-display-card{
-      padding-bottom: 4rem;
+  .ui-display-card {
+    padding-bottom: 4rem;
   }
 }
 
 @media screen and (max-width: 316px) {
-  .ui-display-card{
-      background-color: transparent;
-      padding-bottom: 4rem;
-      margin-top: 2.5rem;
+  .ui-display-card {
+    background-color: transparent;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 4rem;
+    margin-top: 2.5rem;
+    border: none;
   }
 }

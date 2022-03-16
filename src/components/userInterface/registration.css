@@ -22,20 +22,20 @@
   margin-top: -1rem;
 }
 
-.form-item label{
-    float: left;
-    font-size: .75rem;
+.form-item label {
+  float: left;
+  font-size: 0.75rem;
 }
 
-.form-item label span{
+.form-item label span {
   font-weight: bold;
-    color:var(--alert-notification-color)
+  color: var(--alert-notification-color);
 }
 
 .resgistrion-input-field {
   width: 12rem;
   max-width: 20rem;
-  padding: .5rem .25rem .5rem .25rem;
+  padding: 0.5rem 0.25rem 0.5rem 0.25rem;
   background-color: var(--input-box-background-color);
   border: none;
   border-radius: var(--button-border-radius);
@@ -43,23 +43,27 @@
   color: var(--background-color);
 }
 
-.selector{
+.selector {
   width: 12.6rem;
 }
 
-.invalid{
-    border: 2px solid var(--alert-notification-color);
+.invalid {
+  border: 2px solid var(--alert-notification-color);
 }
 
-.ajust-button{
-    margin-left: 4.3rem;
+.ajust-button {
+  width: 12.5rem;
+  margin-left: 4.3rem;
 }
 
 @media screen and (max-width: 248px) {
-  .resgistrion-input-field{
+  .resgistrion-input-field {
     width: 8rem;
   }
-  .selector{
+  .ajust-button {
+    width: 8.5rem;
+  }
+  .selector {
     width: 8.8rem;
   }
 }

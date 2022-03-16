@@ -80,7 +80,7 @@ function Registration() {
 
   return (
     <UICards card_name='ui-display-card'>
-      <h2 className='form-title'>Make yout own registration</h2>
+      <h2 className='form-title'>Make your own registration</h2>
       <form className='formulary'>
         <ul className='registration-form'>
           <li className='form-item'>

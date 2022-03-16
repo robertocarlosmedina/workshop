@@ -9,14 +9,18 @@ function AppHeader() {
   return (
     <header>
       <Link to={"/"}>
-        <h1 className='app-tittle'>Workshop</h1>
+        <h1 className="app-tittle">Workshop</h1>
       </Link>
-      <ul className='header-menu'>
+      <ul className="header-menu">
         <li>
-          <RiTeamFill />
+          <Link to={"/competition"}>
+            <RiTeamFill className="icon" />
+          </Link>
         </li>
         <li>
-          <FaCalendarAlt />
+          <Link to={"/calendar"}>
+            <FaCalendarAlt className="icon" />
+          </Link>
         </li>
       </ul>
     </header>

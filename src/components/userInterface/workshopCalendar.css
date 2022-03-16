@@ -1,0 +1,131 @@
+.normal-calendar-table {
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--card-background-color-2);
+  border-radius: var(--card-border-radius);
+  border: 1px solid #7c7c7cc5;
+  border-collapse: initial;
+  animation: bottom-top-animation 3s both ease-out;
+}
+
+.normal-calendar-table-header {
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.normal-calendar-table-header th {
+  border-bottom: 2px solid var(--primary-text-color);
+  border-right: 2px solid var(--primary-text-color);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.normal-column td {
+  font-size: min(3vh, 0.8rem);
+  border-bottom: 1px solid var(--secundary-text-color);
+  border-right: 2px solid var(--primary-text-color);
+  padding: 0.6rem 0.5rem 0.6rem 0.5rem;
+}
+
+.normal-column .last-column,
+.normal-calendar-table-header .last-column {
+  border-right: 1px solid transparent;
+}
+
+.last-line td {
+  border-bottom: 1px solid transparent;
+}
+
+@media only screen and (max-width: 724px) {
+  .normal-calendar-table {
+    width: 100%;
+  }
+
+  .normal-calendar-table {
+    background-color: transparent;
+    border: none;
+  }
+
+  /* Force table to not be like tables anymore */
+  .normal-calendar-table,
+  .normal-calendar-table-header,
+  .normal-calendar-table-header-body,
+  .normal-calendar-table-header th,
+  .normal-calendar-table-header-body td,
+  .normal-calendar-table-header-body tr {
+    display: block;
+    font-size: min(3vh, 0.6rem);
+  }
+
+  .normal-calendar-table-header th {
+    display: none;
+  }
+
+  .normal-calendar-table-header-body tr {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background-color-2);
+    border: 1px solid #68676770;
+  }
+
+  .last-line td {
+    border-bottom: 1px solid var(--secundary-text-color);
+  }
+
+  .normal-column td {
+    position: relative;
+    text-align: left;
+    padding-left: min(20vh, 4.5rem);
+    border-right: none;
+    border-bottom: 1px solid var(--secundary-text-color);
+  }
+  .normal-column td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 6px;
+    white-space: nowrap;
+  }
+
+  .normal-calendar-table-header-body td:nth-of-type(1):before {
+    content: "Lesson";
+    font-weight: bold;
+  }
+  .normal-calendar-table-header-body td:nth-of-type(2):before {
+    content: "Date";
+    font-weight: bold;
+  }
+  .normal-calendar-table-header-body td:nth-of-type(3):before {
+    content: "Location";
+    font-weight: bold;
+  }
+  .normal-calendar-table-header-body td:nth-of-type(4):before {
+    content: "Online";
+    font-weight: bold;
+  }
+  .normal-calendar-table-header-body td:nth-of-type(5):before {
+    content: "Content";
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-height: 328px) {
+  .normal-calendar-table {
+    width: 115%;
+    margin-left: -1rem;
+  }
+  .ui-card-display {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-height: 299px) {
+  .normal-calendar-table {
+    margin-top: -0.5rem;
+  }
+  .schedule-ajust {
+    margin-top: -1rem;
+  }
+}

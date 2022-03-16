@@ -1,0 +1,19 @@
+.ilustration-ajust{
+    width: min(5rem, 50%);
+}
+
+.bold-text{
+    font-weight: bold;
+}
+
+.competition-ajust-button{
+    width: 12.5rem;
+    margin-left: -.3rem;
+}
+
+@media screen and (max-width: 248px) {
+    .competition-ajust-button{
+      width: 8.5rem;
+    }
+  }
+  

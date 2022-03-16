@@ -10,8 +10,10 @@
   --secondary-button-background-hover-color: #3b7196;
   --input-box-background-color: #a4a4a4;
   --header-background-color: #0f4c75;
-  --alert-notification-color:#ff2222;
-  --alert-notification-color-2:#00FF38;
+  --alert-notification-color: #ff2222;
+  --alert-notification-color-2: #00ff38;
+  --not-top-3-grade-color: #05ff00;
+  --top-3-grade-color: #faff00;
   --card-border-radius: 0.6rem;
   --button-border-radius: 0.3rem;
 }
@@ -48,9 +50,9 @@ code {
   transition: background-color 0.3s ease-in-out;
 }
 
-.ilustration{
+.ilustration {
   width: min(13rem, 50%);
-  filter:drop-shadow(.5rem .5rem 1rem rgb(54, 54, 54));
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem rgba(41, 41, 41, 0.5));
 }
 
 .button:hover {
@@ -76,18 +78,46 @@ code {
   background-color: var(--primary-button-background-hover-color);
 }
 
-.link{
-  color:#0066ff;
+.link {
+  color: #0066ff;
   font-style: normal;
   text-decoration: none;
 }
 
-.normal-text{
-  font-size: min(3vh, .9rem);
+.normal-text {
+  font-size: min(3vh, 0.9rem);
+}
+
+.competition-text {
+  width: 60%;
+  margin: 0 auto;
+  max-width: 15rem;
+}
+
+.icon {
+  width: min(6vh, 1rem);
+  color: var(--primary-text-color);
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  cursor: pointer;
+  color: var(--input-box-background-color);
+}
+
+@keyframes bottom-top-animation {
+  from {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-height: 512px) {
-  body{
+  body {
     overflow: auto;
   }
 }

@@ -1,0 +1,56 @@
+.results-table {
+  margin: 2rem auto;
+}
+
+.results-colunm {
+  width: 20%;
+  padding: 1rem;
+  border-radius: var(--card-border-radius);
+  animation: bottom-top-animation 3s both ease-out;
+}
+
+.top-three {
+  background-color: var(--card-background-color-1);
+}
+
+.not-in-top-three {
+  background-color: var(--card-background-color-2);
+}
+
+.team-id,
+.team-grade,
+.team-name {
+  font-size: min(3vh, 0.9rem);
+}
+
+.team-id {
+  float: left;
+  margin-left: 5%;
+  font-weight: normal;
+}
+
+.team-name {
+  float: left;
+  margin-left: 10%;
+  font-weight: bold;
+}
+
+.team-grade {
+  float: right;
+  margin-right: 5%;
+  font-weight: bold;
+}
+
+.grade-top-three {
+  color: var(--top-3-grade-color);
+}
+
+.grade-not-top-three {
+  color: var(--not-top-3-grade-color);
+}
+
+@media only screen and (max-height: 299px) {
+  .competition-ajust {
+    margin-top: 2rem;
+  }
+}
