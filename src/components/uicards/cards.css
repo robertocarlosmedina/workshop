@@ -20,6 +20,30 @@
   border: 1px solid #7c7c7cb0;
 }
 
+.ui-display-card-1 {
+  width: 80%;
+  max-width: 50rem;
+  position: relative;
+  margin: min(15vh, 5rem) auto;
+  padding: 1rem;
+  border-radius: var(--card-border-radius);
+  text-align: center;
+  overflow: hidden;
+}
+
+.login-card {
+  width: 40%;
+  min-width: 13rem;
+  max-width: 18rem;
+  position: relative;
+  margin: 5rem auto;
+  padding: 1rem;
+  background-color: var(--card-background-color-1);
+  border-radius: var(--card-border-radius);
+  text-align: center;
+  overflow: hidden;
+}
+
 .ui-display-card-background-null {
   width: 80%;
   max-width: 50rem;

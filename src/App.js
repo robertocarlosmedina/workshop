@@ -10,6 +10,7 @@ import RegistrationConfirm from "./components/userInterface/registrationConfirm"
 import Competition from "./components/userInterface/competition/competition";
 import WorkshopCalendar from "./components/userInterface/workshopCalendar";
 import AdminDashboard from "./components/admin/adminDashboard";
+import LoginAuth from "./components/admin/loginAuth";
 import UrlError404 from "./components/urlError404";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route exact path={"/participant/"} element={<RegistrationConfirm />} />
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />
-        <Route exact path={"/admin"} element={<AdminDashboard />} />
+        <Route exact path={"/admin"} element={<LoginAuth />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
       <UICards card_name="header-card">
