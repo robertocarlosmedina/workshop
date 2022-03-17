@@ -1,20 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+
+import "./appHeader.css";
 
 function AdminHeader() {
-  const history = History()
+  
+  const logOut = () => {
 
-  const goToHome = () =>{
-    console.log("Okoko")
-    history.push("/")
   }
+
   return (
     <header>
-      <button onClick={goToHome}>Workshop</button>
-      <ul>
-        <li>teams</li>
-        <li>Calendar</li>
-      </ul>
+      <h1 className="app-tittle">Workshop</h1>
+      <p className="normal-text admin-text-ajust" onClick={logOut}>Log out</p>
     </header>
   )
 }

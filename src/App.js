@@ -5,9 +5,11 @@ import FrontPage from "./components/userInterface/frontPage";
 import Registration from "./components/userInterface/registration";
 import UICards from "./components//uicards/uiCards";
 import AppHeader from "./components/headers/appHeader";
+import AdminHeader from "./components/headers/adminHeader";
 import RegistrationConfirm from "./components/userInterface/registrationConfirm";
 import Competition from "./components/userInterface/competition/competition";
-import WorkshopCalendar from './components/userInterface/workshopCalendar'
+import WorkshopCalendar from "./components/userInterface/workshopCalendar";
+import AdminDashboard from "./components/admin/adminDashboard";
 import UrlError404 from "./components/urlError404";
 
 function App() {
@@ -24,10 +26,15 @@ function App() {
         <Route exact path={"/participant/"} element={<RegistrationConfirm />} />
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />
+        <Route exact path={"/admin"} element={<AdminDashboard />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
       <UICards card_name="header-card">
-        <AppHeader />
+        {window.location.pathname.includes("admin") ? (
+          <AdminHeader />
+        ) : (
+          <AppHeader />
+        )}
       </UICards>
     </React.Fragment>
   );

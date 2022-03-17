@@ -19,3 +19,11 @@
   display: inline-block;
   margin-left: 1.2rem;
 }
+
+.admin-text-ajust{
+  position: absolute;
+  top: .4rem;
+  float: right;
+  right: min(4%, 3rem);
+  font-size: .7rem;
+}
