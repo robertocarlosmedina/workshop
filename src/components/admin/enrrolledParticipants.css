@@ -1,0 +1,26 @@
+.participants-display{
+    margin-left: -2rem;
+}
+
+.display-ajust{
+    max-width: 15rem;
+}
+
+.titlte-text{
+    font-weight: bold;
+    max-width: 15rem;
+}
+
+.participant-element{
+    list-style: none;
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background-color-2);
+}
+
+.participant-mail{
+    font-weight: normal;
+    color:var(--secundary-text-color)
+}

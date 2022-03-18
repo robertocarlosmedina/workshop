@@ -48,7 +48,7 @@
   width: 80%;
   max-width: 50rem;
   position: relative;
-  margin: 12rem auto;
+  margin: 11rem auto;
   padding: 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
@@ -89,5 +89,12 @@
     padding-bottom: 4rem;
     margin-top: 2.5rem;
     border: none;
+  }
+}
+
+
+@media screen and (max-height: 400px) {
+  .ui-display-card-background-null{
+    margin-top: 9rem;
   }
 }

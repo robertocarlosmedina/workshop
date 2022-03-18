@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import UICards from "../uicards/uiCards";
+import EnrrolledParticipants from './enrrolledParticipants'
+import EnrrolledTeams from './enrrolledTeams'
 
 import "./adminDashboard.css";
 
@@ -9,10 +11,12 @@ function AdminDashboard() {
     {
       name: "Teams",
       state: true,
+      Component: EnrrolledTeams
     },
     {
       name: "Participants",
       state: false,
+      Component: EnrrolledParticipants
     },
   ]);
 
@@ -48,17 +52,11 @@ function AdminDashboard() {
         </nav>
       </div>
       <UICards card_name='ui-display-card-background-null'>
-        <p>lklklklklklkl</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
-        <p>ff3f34f</p>
+        {subMenu.map((option, i) =>
+          <div>
+            {option.state && <option.Component ></option.Component>}
+          </div>
+        )}
       </UICards>
     </div>
   );
