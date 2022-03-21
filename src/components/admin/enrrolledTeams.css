@@ -1,0 +1,70 @@
+.team-grade-form {
+  overflow: hidden;
+}
+
+.show {
+  animation: show-form 1s ease-in-out;
+}
+
+.hidde {
+  display: none;
+}
+
+.team-ajust{
+    display: inline-grid;
+    width: 30%;
+    min-width: 12rem;
+    max-width: 20rem;
+}
+
+.display-team-name{
+    font-weight: bold;
+    font-size: min(3vh, 1.5rem);
+}
+
+.group-members, .team-grade-form{
+    background-color: var(--card-background-color-1);
+    border-radius: var(--card-border-radius);
+    padding: 1rem;
+}
+
+.team-element-name{
+    font-weight: bold;
+}
+
+.team-element-email{
+    font-weight: bold;
+    font-size: min(5vh, .7rem);
+    color: var(--secundary-text-color);
+}
+
+.grade-matrics{
+    list-style: none;
+    margin-left: -2rem;
+    margin-bottom: 1rem;
+}
+
+.grade-matrics-item{
+    display: inline-block;
+    list-style: none;
+}
+
+.grade-matrics-input {
+    width: 4rem;
+    height: 1.5rem;
+    border: none;
+    background-color: var(--input-box-background-color);
+    border-radius: var(--button-border-radius);
+}
+
+@keyframes show-form {
+  from {
+    transform: translateY(1rem);
+    display: none;
+  }
+  to {
+    transform: translateY(0rem);
+
+    display: block;
+  }
+}

@@ -53,7 +53,7 @@ function AdminDashboard() {
       </div>
       <UICards card_name='ui-display-card-background-null'>
         {subMenu.map((option, i) =>
-          <div>
+          <div key={i}>
             {option.state && <option.Component ></option.Component>}
           </div>
         )}

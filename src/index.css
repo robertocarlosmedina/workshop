@@ -29,7 +29,7 @@ body {
   background-color: var(--background-color);
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow:scroll;
   cursor: default;
 }
 
