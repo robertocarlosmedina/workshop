@@ -101,6 +101,7 @@ function EnrrolledTeams() {
       ],
     },
   ]);
+
   const addingShowHiddeVariable = () => {
     return teams.map((team, i) => ({ ...team, showGradeForm: false }));
   };
@@ -118,6 +119,33 @@ function EnrrolledTeams() {
           : { ...team, showGradeForm: false }
       )
     );
+  };
+
+  const matricGradeInputHanlder = (event) => {
+    const teamID = parseInt(event.target.getAttribute("data-id"));
+    const matricID = parseInt(event.target.getAttribute("data-matricid"));
+    const value = parseFloat(event.target.value);
+    console.log(teamID, matricID, value);
+    setEnrrolledTeams(
+      enrrolledTeams.map((team, i) =>
+        team.id === teamID
+          ? {
+              ...team,
+              gradeInfo: team.gradeInfo.map((matric, i) =>
+                matric.matricID === matricID
+                  ? { ...matric, matricValue: value }
+                  : { ...matric }
+              ),
+            }
+          : { ...team }
+      )
+    );
+  };
+
+  const gradeTeam = (event) => {
+    // event.preventDefault(); // Disable to form to send the request to the server and reload page
+    const timeID = parseInt(event.target.getAttribute("data-id"));
+    console.log(timeID);
   };
 
   return (
@@ -139,39 +167,59 @@ function EnrrolledTeams() {
               ))}
             </div>
             <p></p>
-            <div
-              className={`team-grade-form ${
-                team.showGradeForm ? "show" : "hidde"
-              }`}
-            >
-                <p>Grade this team: </p>
-              {team.gradeInfo.map((grade, i) => (
-                <ul key={grade.matricID} className="grade-matrics">
-                  <li className="grade-matrics-item">
-                    <span>{grade.matricName}</span>
-                  </li>
-                  <li>
-                    <input
-                      type="number"
-                      min="0"
-                      max="10"
-                      step=".1"
-                      className="grade-matrics-input"
-                    />{" "}
-                    x {grade.matricPercentage}%
-                  </li>
-                </ul>
-              ))}
-            </div>
-            <p>
-              <button
-                className="button primary-button team-button-ajust"
-                data-id={team.id}
-                onClick={showHiddeTeamGradeForm}
+            <form>
+              <div
+                className={`team-grade-form ${
+                  team.showGradeForm ? "show" : "hidde"
+                }`}
               >
-                Grade
-              </button>
-            </p>
+                <p className="grade-title">Grade this team</p>
+                {team.gradeInfo.map((matric, i) => (
+                  <ul key={matric.matricID} className="grade-matrics">
+                    <li className="grade-matrics-item">
+                      <span>{matric.matricName}</span>
+                    </li>
+                    <li>
+                      <input
+                        data-id={team.id}
+                        data-matricid={matric.matricID}
+                        onChange={matricGradeInputHanlder}
+                        type="number"
+                        min="0"
+                        placeholder="0.0"
+                        max="10"
+                        step=".1"
+                        required
+                        className="grade-matrics-input"
+                      />{" "}
+                      x {matric.matricPercentage}%
+                    </li>
+                  </ul>
+                ))}
+              </div>
+
+              <p>
+                {team.showGradeForm && (
+                  <input
+                    type="submit"
+                    className="button primary-button team-button-ajust"
+                    data-id={team.id}
+                    onClick={gradeTeam}
+                    value="Grade Team"
+                  />
+                )}
+                <br />
+                <input
+                  type="button"
+                  className={`button ${
+                    team.showGradeForm ? "secundary-button" : "primary-button"
+                  } team-button-ajust`}
+                  data-id={team.id}
+                  onClick={showHiddeTeamGradeForm}
+                  value={!team.showGradeForm ? "Grade" : "Hide"}
+                />
+              </p>
+            </form>
           </li>
         ))}
       </ul>

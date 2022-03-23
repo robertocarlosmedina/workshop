@@ -25,7 +25,7 @@ function LoginAuth() {
   };
 
   function authenticateAdministrator(event) {
-    event.preventDefault(); // Disable to form to send the request to the server and reload page
+    //event.preventDefault(); // Disable to form to send the request to the server and reload page
     if (email.valid && password.valid) {
       console.log(email.value, password.value);
     }
@@ -50,7 +50,7 @@ function LoginAuth() {
                 email.valid ? "valid" : "invalid"
               }`}
               required
-              placeholder='Enter your full name'
+              placeholder='Your email'
             />
           </li>
           <li className='form-item login-form-item'>
@@ -67,7 +67,7 @@ function LoginAuth() {
                 password.valid ? "valid" : "invalid"
               }`}
               required
-              placeholder='example@gmail.com'
+              placeholder='........'
             />
           </li>
         </ul>

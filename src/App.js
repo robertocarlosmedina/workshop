@@ -27,7 +27,8 @@ function App() {
         <Route exact path={"/participant/"} element={<RegistrationConfirm />} />
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />
-        <Route exact path={"/admin"} element={<AdminDashboard />} />
+        <Route exact path={"/admin"} element={<LoginAuth />} />
+        <Route exact path={"/admin/:userToken"} element={<AdminDashboard />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
       <UICards card_name="header-card">

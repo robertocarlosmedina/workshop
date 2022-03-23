@@ -49,9 +49,19 @@
     list-style: none;
 }
 
+.team-button-ajust{
+  margin-top: .5rem;
+}
+
+.grade-title{
+  font-weight: bold;
+}
+
 .grade-matrics-input {
+  margin-top: .5rem;
     width: 4rem;
     height: 1.5rem;
+    padding-left: .5rem;
     border: none;
     background-color: var(--input-box-background-color);
     border-radius: var(--button-border-radius);

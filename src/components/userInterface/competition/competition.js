@@ -6,8 +6,8 @@ import WaitingResults from './waitingResults'
 import CompetitionResults from './competitionResults'
 // import CompetetionResults from './competitionResults'
 
-function CompetitionOk() {
+function Competition() {
   return <CompetitionResults />;
 }
 
-export default CompetitionOk;
+export default Competition;
