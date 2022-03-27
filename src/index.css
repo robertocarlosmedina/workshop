@@ -29,8 +29,10 @@ body {
   background-color: var(--background-color);
   width: 100%;
   height: 100vh;
-  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y: scroll;
   cursor: default;
+  scroll-behavior: smooth;
 }
 
 code {
@@ -118,6 +120,7 @@ code {
 
 @media screen and (max-height: 512px) {
   body {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 }

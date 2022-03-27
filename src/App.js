@@ -1,7 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-import FrontPage from "./components/userInterface/frontPage";
+import FrontPage from "./components/frontPage";
+import Platform from "./components/userInterface/platform";
 import Registration from "./components/userInterface/registration";
 import UICards from "./components//uicards/uiCards";
 import AppHeader from "./components/headers/appHeader";
@@ -14,10 +15,13 @@ import LoginAuth from "./components/admin/loginAuth";
 import UrlError404 from "./components/urlError404";
 
 function App() {
+  const location = useLocation()
+
   return (
     <React.Fragment>
       <Routes>
         <Route exact path={"/"} element={<FrontPage />} />
+        <Route exact path={"/registrationPlatform"} element={<Platform />} />
         <Route exact path={"/registration"} element={<Registration />} />
         <Route
           exact
@@ -31,13 +35,13 @@ function App() {
         <Route exact path={"/admin/:userToken"} element={<AdminDashboard />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
-      <UICards card_name="header-card">
+      {location.pathname !== "/" && <UICards card_name="header-card">
         {window.location.pathname.includes("admin") ? (
           <AdminHeader />
         ) : (
           <AppHeader />
         )}
-      </UICards>
+      </UICards>}
     </React.Fragment>
   );
 }

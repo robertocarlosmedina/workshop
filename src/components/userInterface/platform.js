@@ -8,7 +8,7 @@ import PairProgrammingIlustration from "../../assets/ilustrations/pair-programmi
 import digitalPresentationIlustration from "../../assets/ilustrations/digital-presentation.png";
 import subscribeBroIlustration from "../../assets/ilustrations/subscriber-bro.png";
 
-function FrontPage() {
+function Platform() {
   const [positionIndex, setPositionIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("top-bottom-animation");
   const carroselPartes = [
@@ -78,4 +78,4 @@ function FrontPage() {
   );
 }
 
-export default FrontPage;
+export default Platform;

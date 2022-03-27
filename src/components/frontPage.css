@@ -1,0 +1,86 @@
+.frontPage-conteiner {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--header-background-color);
+}
+
+.frontPage-tittle-ajust {
+  left: min(8%, 4rem) !important;
+}
+
+.text-conteiner {
+  position: absolute;
+  left: min(8%, 4rem);
+  margin-top: 25vh;
+}
+
+.mural-text {
+  font-size: min(8vw, 3.5rem);
+  font-weight: bold;
+}
+
+.mural-text span {
+  font-size: min(15vw, 1rem);
+  color: var(--secundary-text-color);
+}
+
+.registration-button {
+  width: 10rem;
+  height: 3rem;
+  background-color: var(--primary-button-background-color);
+}
+
+.right-card-container {
+  background-color: var(--header-background-color);
+  position: absolute;
+  width: 100%;
+  height: 56rem;
+  overflow: hidden;
+}
+
+.right-card {
+  width: 60rem;
+  height: 50rem;
+  margin-right: min(50%, -30rem);
+  border-radius: 8rem;
+  float: right;
+  background-color: var(--card-background-color-1);
+  transform: rotate(35deg);
+  z-index: 30;
+}
+
+.frontPage-ajust {
+  margin-top: 32vh;
+  float: right;
+  margin-right: 5%;
+  width: min(20rem, 50%);
+}
+
+@media screen and (max-width: 950px) {
+    .frontPage-conteiner {
+        align-items: center;
+        text-align: center;
+    }
+    .right-card-container{
+        background-color: var(--card-background-color-1);
+        height: 100vh;
+    }
+    .right-card{
+        display: none;
+    }
+    .frontPage-ajust{
+        float: none;
+        margin-top: min(15vh, 15rem);
+        margin-left: 1rem;
+        width: min(13rem, 50%);
+    }
+    .text-conteiner {
+        text-align: left;
+        margin-top: -1rem;
+    }
+    .mural-text span {
+        font-size: min(15vw, .8rem);
+    }
+
+  }
+  
