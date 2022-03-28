@@ -1,8 +1,14 @@
+.frontPage{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
 
 .frontPage-conteiner {
-  width: 100%;
+  overflow: hidden;
+  width: 100vw;
   height: 100vh;
-  background-color: var(--header-background-color);
+  right: 0;
 }
 
 .frontPage-tittle-ajust {
@@ -16,7 +22,7 @@
 }
 
 .mural-text {
-    text-align: left;
+  text-align: left;
   font-size: min(8vw, 3.5rem);
   font-weight: bold;
   animation: left-right-animation 2s both;
@@ -36,165 +42,218 @@
 }
 
 .right-card-container {
-  background-color: var(--header-background-color);
+  /* background-color: var(--header-background-color); */
   position: absolute;
   width: 100vw;
-  height: 60rem;
+  height: 100rem;
   overflow: hidden;
-  animation: right-left-animation 2s both;
+  overflow-x: hidden;
+  right: 0;
 }
 
 .right-card {
-  width: min(80vw, 60rem);
-  height: min(80vw, 50rem);
+  width: min(80vw, 70rem);
+  height: min(80vw, 60rem);
   max-width: 60rem;
   max-height: 50rem;
-  margin-right: -40%;
+  margin-right: -25vw;
   border-radius: 8rem;
   float: right;
+  margin-top: min(10vh, -2rem);
   background-color: var(--card-background-color-1);
   transform: rotate(35deg);
   z-index: 30;
   box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
+  overflow: hidden;
+  animation: right-left-animation-2 2s both;
 }
 
 .frontPage-ajust {
-  margin-top: 32vh;
+  margin-top: 20vh;
   float: right;
-  margin-right: 10%;
-  width: min(20rem, 50%);
-
+  margin-right: 4vw;
+  width: min(30rem, 50%);
+  max-width: 26rem;
 }
 
-.ilustration{
-    animation: show-up 4s both;
+.ilustration {
+  animation: show-up 4s both;
 }
 
-.descritpion-conteiner{
-    width: auto;
-    text-align: center;
-    left: 0;
-    position: absolute;
-    margin-top: 10vh;
+.descritpion-conteiner {
+  position: absolute;
+  overflow: hidden;
+  width: 100vw;
+  text-align: center;
+  position: absolute;
+  margin: 10vh auto;
 }
 
-.session-tittle{
-    width: 100%;
-    margin-top: 1rem;
-    font-size: min(6vh, 1.8rem);
-    font-weight: bold;
+.session-tittle {
+  width: 100%;
+  margin-top: 1rem;
+  font-size: min(6vh, 1.8rem);
+  font-weight: bold;
 }
 
-.description-session-text{
-    width: 80%;
-    margin: min(8vh, 5rem) auto;
-    max-width: 30rem;
-    font-size: min(4vh, .9rem);
+.description-session-text {
+  width: 80%;
+  margin: min(8vh, 5rem) auto;
+  max-width: 30rem;
+  font-size: min(4vh, 0.9rem);
 }
 
-.coordinator-conteiner{
-    text-align: center;
-    width: 100%;
-    left: 0;
-    margin-top: 70vh;
-    position: absolute;
+.coordinator-conteiner {
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  margin: 70vh auto;
+  margin-right: 0;
 }
-.coordinator-list-display{
-    width: 80%;
-    margin: 5rem auto;
+.coordinator-list-display {
+  width: 100%;
+  margin: 5rem auto;
 }
-.coordinator-display{
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
-    margin-left: -2.3rem;
-}
-
-.coordinators-item{
-    display: inline-block;
-    width: 10rem;
-    padding: 1rem;
-    margin: 1rem;
-    margin-left: -1.5rem;
-    background-color: var(--card-background-color-1);
-    box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
-    border-radius: 1rem;
-    list-style: none;
-    margin-left: .2rem;
+.coordinator-display {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  margin-left: -1.9rem;
 }
 
-.firts-item{
+.coordinators-item {
+  display: inline-block;
+  width: min(30vw, 10rem);
+  min-width: 8rem;
+  padding: 1rem;
+  margin: 1.5rem;
+  background-color: var(--card-background-color-1);
+  box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
+  border-radius: 1rem;
+  list-style: none;
+  margin-left: 0.2rem;
 }
 
-.coordinator-img{
-    width: 9rem;
-    height: 9rem;
-    background-color: var(--input-box-background-color);
-    border-radius: 100%;
-    margin: 0 auto;
+.coordinator-img {
+  width: min(30vw, 9rem);
+  min-height: 5rem;
+  min-width: 5rem;
+  height: min(30vw, 9rem);
+  background-color: var(--input-box-background-color);
+  border-radius: 100%;
+  margin: 0 auto;
 }
 
-.footer-item{
-    width: 100%;
-     background-color: var(--card-background-color-1);
-     padding: 1rem;
+.footer-item {
+  overflow: hidden;
+  width: 100vw;
+  height: 25rem;
+  background-color: var(--card-background-color-1);
+  padding: 1rem;
+  margin-top: -50vh;
+  text-align: center;
+  justify-content: center;
+}
+
+.footer-ajust-header{
+  margin-left: -1.35rem;
+}
+
+.footer-text-ajust{
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.text-ajust{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  margin: -1rem auto;
+}
+
+.copyrigth-text{
+  margin-top: 10vh;
+  font-size: .8rem; 
+  color: var(--secundary-text-color);
+}
+
+.sponcer-logos{
+  margin-left: -2.7rem;
+  margin-top: 3rem;
+}
+
+.sponcer-img {
+  width: min(13rem, 50%);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem rgba(41, 41, 41, 0.5));
 }
 
 @media screen and (max-width: 950px) {
-    .right-card {
-        border-radius: 3rem;
-        width: min(100vw, 70rem);
-        height: min(100vw, 70rem);
-    }
-    .frontPage-ajust{
-        margin-top: min(15vh, 15rem);
-    }
-    .text-conteiner {
-        text-align: left;
-        margin-top: 45vh;
-    }
-    .mural-text-1 {
-        font-size: min(10vw, .6rem);
-    }
-    .registration-button {
-        width: 6rem;
-        height: 2rem;
-        margin-top: 2rem;
-    }
+  .right-card {
+    border-radius: 3rem;
+    width: min(100vw, 70rem);
+    height: min(100vw, 70rem);
+    margin-right: -40vw;
+    margin-top: 0;
+  }
+  .frontPage-ajust {
+    margin-top: min(15vh, 15rem);
+  }
+  .text-conteiner {
+    text-align: left;
+    margin-top: 45vh;
+  }
+  .mural-text-1 {
+    font-size: min(10vw, 0.6rem);
+  }
+  .registration-button {
+    width: 6rem;
+    height: 2rem;
+    margin-top: 2rem;
+  }
+  .coordinator-conteiner {
+    margin-top: 90vh;
+  }
+  .footer-ajust-header{
+    margin-left: -.9rem;
+  }
+  .sponcer-logos{
+    margin-left: -1.7rem;
+  }
 }
 
-
-@keyframes right-left-animation {
-    from {
-      transform: translateX(20rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0rem);
-      opacity: 1;
-    }
+@keyframes right-left-animation-2 {
+  from {
+    transform: translateX(20rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    transform: rotate(35deg);
+    opacity: 1;
+  }
 }
 
 @keyframes left-right-animation {
-    from {
-      transform: translateX(-20rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0rem);
-      opacity: 1;
-    }
+  from {
+    transform: translateX(-20rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
 }
 
 @keyframes show-up {
-    from {
-      transform: translateX(10rem);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0rem);
-      opacity: 1;
-    }
+  from {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
 }

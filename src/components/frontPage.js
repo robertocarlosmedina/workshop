@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 import "./frontPage.css";
 
 import CodingWorkshopRafiki from "../assets/ilustrations/Coding-workshop-rafiki.png";
+import WascalLogo from "../assets/icons/wascal.png";
+import UTALogo from "../assets/icons/uta.png";
 
 function FrontPage() {
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
+
   const [coordinators, setCoordinators] = useState([
     {
       name: "Roberto Medina",
@@ -39,7 +47,7 @@ function FrontPage() {
           <div className='right-card'></div>
         </div>
         <img
-          className={`ilustration frontPage-ajust`}
+          className='ilustration frontPage-ajust'
           src={CodingWorkshopRafiki}
           alt={"Coding workshop"}
         />
@@ -52,13 +60,19 @@ function FrontPage() {
               Limited registration, register now
             </span>
             <br />
+            <Link to={"/registrationPlatform"}>
             <button className='button registration-button'>Register</button>
+            </Link>
+            
           </p>
         </div>
       </section>
       <section className='descritpion-conteiner'>
         <h1 className='session-tittle'>Description</h1>
-        <p className='description-session-text'>
+        <p
+          className='description-session-text'
+          data-aos='fade-up'
+          data-aos-easing='ease-in-out'>
           Limited registration, register now Limited registration, register now
           Limited registration, register now Limited registration, register now
         </p>
@@ -69,6 +83,8 @@ function FrontPage() {
           <ul className='coordinator-display'>
             {coordinators.map((coordinator, i) => (
               <li
+                data-aos='fade-up'
+                data-aos-easing='ease-in-out'
                 key={i}
                 className={`coordinators-item ${i === 0 ? "firts-item" : ""}`}>
                 <div>
@@ -83,13 +99,33 @@ function FrontPage() {
             ))}
           </ul>
         </div>
-        {/* <footer className="footer-item">
-        <h1 className='session-tittle'>Contributors</h1>
-        <p className='description-session-text'>
-        A special thank you to
-        </p>
-        </footer> */}
       </section>
+      <div className='footer-item'>
+        <h1 className='session-tittle footer-ajust-header'>Contributors</h1>
+        <div className='footer-text-ajust'>
+          <p className='text-ajust'>A special thank you to</p>
+        </div>
+        <div className='sponcer-logos'>
+          <img
+            data-aos='fade-up'
+            className='sponcer-img'
+            data-aos-easing="ease-in-out"
+            src={WascalLogo}
+            alt={"Coding workshop"}
+          />
+          <p></p>
+          <img
+            data-aos='fade-up'
+            data-aos-easing="ease-in-out"
+            className='sponcer-img'
+            src={UTALogo}
+            alt={"Coding workshop"}
+          />
+        </div>
+        <p className='text-ajust copyrigth-text'>
+          Copyrigth © 2022 by Roberto Medina & Raffaele Fiorillo
+        </p>
+      </div>
     </main>
   );
 }
