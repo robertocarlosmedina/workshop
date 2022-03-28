@@ -1,3 +1,4 @@
+
 .frontPage-conteiner {
   width: 100%;
   height: 100vh;
@@ -15,11 +16,15 @@
 }
 
 .mural-text {
+    text-align: left;
   font-size: min(8vw, 3.5rem);
   font-weight: bold;
+  animation: left-right-animation 2s both;
 }
 
-.mural-text span {
+.mural-text-1 {
+  position: absolute;
+  margin-top: 1rem;
   font-size: min(15vw, 1rem);
   color: var(--secundary-text-color);
 }
@@ -33,54 +38,163 @@
 .right-card-container {
   background-color: var(--header-background-color);
   position: absolute;
-  width: 100%;
-  height: 56rem;
+  width: 100vw;
+  height: 60rem;
   overflow: hidden;
+  animation: right-left-animation 2s both;
 }
 
 .right-card {
-  width: 60rem;
-  height: 50rem;
-  margin-right: min(50%, -30rem);
+  width: min(80vw, 60rem);
+  height: min(80vw, 50rem);
+  max-width: 60rem;
+  max-height: 50rem;
+  margin-right: -40%;
   border-radius: 8rem;
   float: right;
   background-color: var(--card-background-color-1);
   transform: rotate(35deg);
   z-index: 30;
+  box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
 }
 
 .frontPage-ajust {
   margin-top: 32vh;
   float: right;
-  margin-right: 5%;
+  margin-right: 10%;
   width: min(20rem, 50%);
+
+}
+
+.ilustration{
+    animation: show-up 4s both;
+}
+
+.descritpion-conteiner{
+    width: auto;
+    text-align: center;
+    left: 0;
+    position: absolute;
+    margin-top: 10vh;
+}
+
+.session-tittle{
+    width: 100%;
+    margin-top: 1rem;
+    font-size: min(6vh, 1.8rem);
+    font-weight: bold;
+}
+
+.description-session-text{
+    width: 80%;
+    margin: min(8vh, 5rem) auto;
+    max-width: 30rem;
+    font-size: min(4vh, .9rem);
+}
+
+.coordinator-conteiner{
+    text-align: center;
+    width: 100%;
+    left: 0;
+    margin-top: 70vh;
+    position: absolute;
+}
+.coordinator-list-display{
+    width: 80%;
+    margin: 5rem auto;
+}
+.coordinator-display{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    margin-left: -2.3rem;
+}
+
+.coordinators-item{
+    display: inline-block;
+    width: 10rem;
+    padding: 1rem;
+    margin: 1rem;
+    margin-left: -1.5rem;
+    background-color: var(--card-background-color-1);
+    box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
+    border-radius: 1rem;
+    list-style: none;
+    margin-left: .2rem;
+}
+
+.firts-item{
+}
+
+.coordinator-img{
+    width: 9rem;
+    height: 9rem;
+    background-color: var(--input-box-background-color);
+    border-radius: 100%;
+    margin: 0 auto;
+}
+
+.footer-item{
+    width: 100%;
+     background-color: var(--card-background-color-1);
+     padding: 1rem;
 }
 
 @media screen and (max-width: 950px) {
-    .frontPage-conteiner {
-        align-items: center;
-        text-align: center;
-    }
-    .right-card-container{
-        background-color: var(--card-background-color-1);
-        height: 100vh;
-    }
-    .right-card{
-        display: none;
+    .right-card {
+        border-radius: 3rem;
+        width: min(100vw, 70rem);
+        height: min(100vw, 70rem);
     }
     .frontPage-ajust{
-        float: none;
         margin-top: min(15vh, 15rem);
-        margin-left: 1rem;
-        width: min(13rem, 50%);
     }
     .text-conteiner {
         text-align: left;
-        margin-top: -1rem;
+        margin-top: 45vh;
     }
-    .mural-text span {
-        font-size: min(15vw, .8rem);
+    .mural-text-1 {
+        font-size: min(10vw, .6rem);
     }
+    .registration-button {
+        width: 6rem;
+        height: 2rem;
+        margin-top: 2rem;
+    }
+}
 
-  }
-  
+
+@keyframes right-left-animation {
+    from {
+      transform: translateX(20rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0rem);
+      opacity: 1;
+    }
+}
+
+@keyframes left-right-animation {
+    from {
+      transform: translateX(-20rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0rem);
+      opacity: 1;
+    }
+}
+
+@keyframes show-up {
+    from {
+      transform: translateX(10rem);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0rem);
+      opacity: 1;
+    }
+}

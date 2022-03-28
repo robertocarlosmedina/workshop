@@ -26,10 +26,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--primary-text-color);
-  background-color: var(--background-color);
-  width: 100%;
+  background-color: var(--header-background-color);
+  width: 100vw;
   height: 100vh;
-  overflow-x:hidden;
+  overflow-x: hidden;
   overflow-y: scroll;
   cursor: default;
   scroll-behavior: smooth;
