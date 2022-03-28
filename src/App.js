@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import FrontPage from "./components/frontPage";
@@ -16,6 +16,18 @@ import UrlError404 from "./components/urlError404";
 
 function App() {
   const location = useLocation()
+  const [showBorder, setShowBorder] = useState(false)
+
+  const addNavbarBorder = () =>{
+    if(window.scrollY >= 10){
+      setShowBorder(true)
+    }
+    else{
+      setShowBorder(false)
+    }
+  }
+
+  window.addEventListener('scroll', addNavbarBorder)
 
   return (
     <React.Fragment>
@@ -35,7 +47,7 @@ function App() {
         <Route exact path={"/admin/:userToken"} element={<AdminDashboard />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
-      {location.pathname !== "/" && <UICards card_name="header-card">
+      {location.pathname !== "/" && <UICards card_name={`${ showBorder ? "header-card active-scroll" : "header-card"}`}>
         {window.location.pathname.includes("admin") ? (
           <AdminHeader />
         ) : (
