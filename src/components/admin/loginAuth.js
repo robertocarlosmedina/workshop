@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Api from "../../api/api";
 
 import UICards from "../uicards/uiCards";
 
@@ -24,10 +25,30 @@ function LoginAuth() {
     setPassword({ value: givenText, valid: validateEmptyString(givenText) });
   };
 
-  function authenticateAdministrator(event) {
+  const  authenticateAdministrator =  async (event) => {
     //event.preventDefault(); // Disable to form to send the request to the server and reload page
     if (email.valid && password.valid) {
       console.log(email.value, password.value);
+      try {
+        Api.post("/user_auth/auth", {
+          email_or_username: email.value,
+          password: password.value,
+        }).then((res) => {
+          const newRegistre = res.data;
+          console.log(newRegistre)
+          if (newRegistre.statusCode !== 200) {
+            console.log(newRegistre.errorMessage);
+            return;
+          }
+          if (newRegistre) {
+            // console.log(newRegistre);
+            // console.log(newRegistre.data.userPersonalCode);
+            // urlChanger(`participant`);
+          }
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   }
 

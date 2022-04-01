@@ -40,6 +40,11 @@ function App() {
           path={"/participant/:personalCode"}
           element={<RegistrationConfirm />}
         />
+        <Route
+          exact
+          path={"/registration/participant/:personalCode"}
+          element={<RegistrationConfirm />}
+        />
         <Route exact path={"/participant/"} element={<RegistrationConfirm />} />
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />

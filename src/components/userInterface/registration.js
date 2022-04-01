@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Api from "../../api/api";
 import { useNavigate } from "react-router";
 
 import UICards from "../uicards/uiCards";
@@ -7,6 +8,11 @@ import "./registration.css";
 
 function Registration() {
   const urlChanger = useNavigate();
+  const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
+    startRegistrationRequest: false,
+    registrationSuccess: false,
+    registrationRequestFinished: false,
+  });
   const [fullName, setFullName] = useState({ value: "", valid: false });
   const [email, setEmail] = useState({ value: "", valid: false });
   const [schoolYear, setSchoolYear] = useState({
@@ -62,20 +68,42 @@ function Registration() {
     });
   };
 
+  /**
+   * 
+   * @param {*} event 
+   * @returns null 
+   * @description Method to call the API to make the registration
+   */
   const submitRegistration = async (event) => {
     event.preventDefault(); // Disable to form to send the request to the server and reload page
     if (fullName.valid && email.valid && enrolledCourse.valid) {
-      console.log(
-        fullName.value,
-        email.value,
-        enrolledCourse.value,
-        schoolYear.value,
-        degreeType.value,
-        participationType.value
-      );
+      try {
+        Api.post("/user_register/make_registration", {
+          email: email.value,
+          full_name: fullName.value,
+          scholar_year: schoolYear.value,
+          degree_type: degreeType.value,
+          course_name: enrolledCourse.value,
+          presential: `${
+            participationType.value == "Presential" ? true : false
+          }`,
+        }).then((res) => {
+          const newRegistre = res.data;
+
+          if (newRegistre.statusCode !== 200) {
+            console.log(newRegistre.errorMessage);
+            return;
+          }
+          if (newRegistre) {
+            // console.log(newRegistre);
+            // console.log(newRegistre.data.userPersonalCode);
+            urlChanger(`participant/${newRegistre.data.userPersonalCode}`);
+          }
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-    const personalCode = "Endj212";
-    urlChanger(`participant/${personalCode}`);
   };
 
   return (

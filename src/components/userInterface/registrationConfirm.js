@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { SiGoogleclassroom } from "react-icons/si";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -8,24 +8,46 @@ import CompletedIlustration from "../../assets/ilustrations/completed-pana.png";
 import GoogleClassroom from "../../assets/icons/google-classroom.png";
 import Calendar from "../../assets/icons/calendar.png";
 import UICards from "../uicards/uiCards";
+import Api from "../../api/api";
 
 import "./registrationConfirm.css";
 
 function RegistrationConfirm(props) {
-  // const [participantInfo, setParticipantInfo] = useState({});
+  const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
+    startAuthRequest: false,
+    registrationSuccess: false,
+    validCode: true,
+  });
   const { personalCode } = useParams();
-  console.log(personalCode);
 
-  // Api.get(`userAuth/${personalCode}`)
-  // .then((response) =>{
-  //   setParticipantInfo(response.data)
-  // })
-  // .catch((error) =>{
-  //   return <Navigate to="/"/>
-  // })
+  useEffect(() => {
+    try {
+      Api.post("/user_register/auth_participant", {
+        userPersonalCode: personalCode,
+      }).then((res) => {
+        const requestResponse = res.data;
+        if (requestResponse.statusCode !== 200) {
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: false,
+          });
+        }
+        if (requestResponse) {
+          // console.log(requestResponse);
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: true,
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
-  if (!personalCode) {
-    return <Navigate to="/" />;
+  // check if the code is not valid to navegate back to the registration page
+  if (!loadingRegistrationHandler.validCode) {
+    return <Navigate to="/registration" />;
   }
 
   return (
