@@ -17,7 +17,8 @@ function LoginAuth() {
 
   const emailFieldHandler = (event) => {
     const givenText = event.target.value;
-    setEmail({ value: givenText, valid: validateEmptyString(givenText) });
+    const validMail = givenText.includes("@") && givenText.includes(".") && !givenText.includes("@.") ? true : false;
+    setEmail({ value: givenText, valid: validMail });
   };
 
   const passwordFieldHandler = (event) => {
@@ -26,22 +27,21 @@ function LoginAuth() {
   };
 
   const  authenticateAdministrator =  async (event) => {
-    //event.preventDefault(); // Disable to form to send the request to the server and reload page
+    event.preventDefault();
     if (email.valid && password.valid) {
-      console.log(email.value, password.value);
       try {
         Api.post("/user_auth/auth", {
-          email_or_username: email.value,
+          email_or_username: `${email.value}`,
           password: password.value,
         }).then((res) => {
           const newRegistre = res.data;
-          console.log(newRegistre)
+          // console.log(newRegistre)
           if (newRegistre.statusCode !== 200) {
             console.log(newRegistre.errorMessage);
             return;
           }
           if (newRegistre) {
-            // console.log(newRegistre);
+            console.log(newRegistre);
             // console.log(newRegistre.data.userPersonalCode);
             // urlChanger(`participant`);
           }
