@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Navigate, useParams } from 'react-router-dom'
 
 import UICards from "../uicards/uiCards";
 import EnrrolledParticipants from './enrrolledParticipants'
 import EnrrolledTeams from './enrrolledTeams'
+import Api from '../../api/api'
 
 import "./adminDashboard.css";
 
-function AdminDashboard() {
+function AdminDashboard(props) {
+  const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
+    startAuthRequest: false,
+    registrationSuccess: false,
+    validCode: true,
+  });
   const [subMenu, setSubMenu] = useState([
     {
       name: "Teams",
@@ -19,6 +26,37 @@ function AdminDashboard() {
       Component: EnrrolledParticipants
     },
   ]);
+  const { accessToken } = useParams();
+
+  useEffect(() => {
+    console.log(accessToken)
+    try {
+      Api.get(`/user_auth/authAccessToken/${accessToken}`)
+      .then((res) => {
+        const requestResponse = res.data;
+        if (requestResponse.statusCode !== 200) {
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: false,
+          });
+        }
+        if (requestResponse) {
+          console.log(requestResponse);
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: true,
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+
+  // check if the code is not valid to navegate back to the registration page
+  if (!loadingRegistrationHandler.validCode) {
+    return <Navigate to="/admin" />;
+  }
 
   const navegateInSubMenu = (event) => {
     const subMenuIndex = subMenu.findIndex(

@@ -21,34 +21,34 @@ function EnrrolledTeams() {
       ],
       gradeInfo: [
         {
-          matricID: 1,
-          matricName: "Code readability",
-          matricValue: 0,
-          matricPercentage: 15,
+          metricID: 1,
+          metricName: "Code readability",
+          metricValue: 0,
+          metricPercentage: 15,
         },
         {
-          matricID: 2,
-          matricName: "Algorithm Efficiency",
-          matricValue: 0,
-          matricPercentage: 20,
+          metricID: 2,
+          metricName: "Algorithm Efficiency",
+          metricValue: 0,
+          metricPercentage: 20,
         },
         {
-          matricID: 3,
-          matricName: "Completed Tasks",
-          matricValue: 0,
-          matricPercentage: 30,
+          metricID: 3,
+          metricName: "Completed Tasks",
+          metricValue: 0,
+          metricPercentage: 30,
         },
         {
-          matricID: 4,
-          matricName: "Creativity",
-          matricValue: 0,
-          matricPercentage: 5,
+          metricID: 4,
+          metricName: "Creativity",
+          metricValue: 0,
+          metricPercentage: 5,
         },
         {
-          matricID: 5,
-          matricName: "Results Analysis",
-          matricValue: 0,
-          matricPercentage: 30,
+          metricID: 5,
+          metricName: "Results Analysis",
+          metricValue: 0,
+          metricPercentage: 30,
         },
       ],
     },
@@ -69,34 +69,34 @@ function EnrrolledTeams() {
       ],
       gradeInfo: [
         {
-          matricID: 8,
-          matricName: "Code readability",
-          matricValue: 0,
-          matricPercentage: 15,
+          metricID: 8,
+          metricName: "Code readability",
+          metricValue: 0,
+          metricPercentage: 15,
         },
         {
-          matricID: 20,
-          matricName: "Algorithm Efficiency",
-          matricValue: 0,
-          matricPercentage: 20,
+          metricID: 20,
+          metricName: "Algorithm Efficiency",
+          metricValue: 0,
+          metricPercentage: 20,
         },
         {
-          matricID: 33,
-          matricName: "Completed Tasks",
-          matricValue: 0,
-          matricPercentage: 30,
+          metricID: 33,
+          metricName: "Completed Tasks",
+          metricValue: 0,
+          metricPercentage: 30,
         },
         {
-          matricID: 41,
-          matricName: "Creativity",
-          matricValue: 0,
-          matricPercentage: 5,
+          metricID: 41,
+          metricName: "Creativity",
+          metricValue: 0,
+          metricPercentage: 5,
         },
         {
-          matricID: 51,
-          matricName: "Results Analysis",
-          matricValue: 0,
-          matricPercentage: 30,
+          metricID: 51,
+          metricName: "Results Analysis",
+          metricValue: 0,
+          metricPercentage: 30,
         },
       ],
     },
@@ -121,20 +121,20 @@ function EnrrolledTeams() {
     );
   };
 
-  const matricGradeInputHanlder = (event) => {
+  const metricGradeInputHanlder = (event) => {
     const teamID = parseInt(event.target.getAttribute("data-id"));
-    const matricID = parseInt(event.target.getAttribute("data-matricid"));
+    const metricID = parseInt(event.target.getAttribute("data-metricid"));
     const value = parseFloat(event.target.value);
-    console.log(teamID, matricID, value);
+    console.log(teamID, metricID, value);
     setEnrrolledTeams(
       enrrolledTeams.map((team, i) =>
         team.id === teamID
           ? {
               ...team,
-              gradeInfo: team.gradeInfo.map((matric, i) =>
-                matric.matricID === matricID
-                  ? { ...matric, matricValue: value }
-                  : { ...matric }
+              gradeInfo: team.gradeInfo.map((metric, i) =>
+                metric.metricID === metricID
+                  ? { ...metric, metricValue: value }
+                  : { ...metric }
               ),
             }
           : { ...team }
@@ -143,8 +143,9 @@ function EnrrolledTeams() {
   };
 
   const gradeTeam = (event) => {
-    // event.preventDefault(); // Disable to form to send the request to the server and reload page
+    event.preventDefault(); // Disable to form to send the request to the server and reload page
     const timeID = parseInt(event.target.getAttribute("data-id"));
+    console.log(enrrolledTeams)
     console.log(timeID);
   };
 
@@ -174,16 +175,16 @@ function EnrrolledTeams() {
                 }`}
               >
                 <p className="grade-title">Grade this team</p>
-                {team.gradeInfo.map((matric, i) => (
-                  <ul key={matric.matricID} className="grade-matrics">
+                {team.gradeInfo.map((metric, i) => (
+                  <ul key={metric.metricID} className="grade-matrics">
                     <li className="grade-matrics-item">
-                      <span>{matric.matricName}</span>
+                      <span>{metric.metricName}</span>
                     </li>
                     <li>
                       <input
                         data-id={team.id}
-                        data-matricid={matric.matricID}
-                        onChange={matricGradeInputHanlder}
+                        data-metricid={metric.metricID}
+                        onChange={metricGradeInputHanlder}
                         type="number"
                         min="0"
                         placeholder="0.0"
@@ -192,7 +193,7 @@ function EnrrolledTeams() {
                         required
                         className="grade-matrics-input"
                       />{" "}
-                      x {matric.matricPercentage}%
+                      x {metric.metricPercentage}%
                     </li>
                   </ul>
                 ))}

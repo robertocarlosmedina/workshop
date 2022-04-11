@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 10;
   top: 3.5rem;
-  background-color: var(--card-background-color-1);
+  background-color: var(--header-background-color);
 }
 
 .admin-sub-menu {

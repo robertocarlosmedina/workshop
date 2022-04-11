@@ -49,7 +49,7 @@ function App() {
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />
         <Route exact path={"/admin"} element={<LoginAuth />} />
-        <Route exact path={"/admin/:userToken"} element={<AdminDashboard />} />
+        <Route exact path={"/admin/:accessToken"} element={<AdminDashboard />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
       {location.pathname !== "/" && <UICards card_name={`${ showBorder ? "header-card active-scroll" : "header-card"}`}>

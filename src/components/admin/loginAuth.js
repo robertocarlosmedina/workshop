@@ -35,15 +35,14 @@ function LoginAuth() {
           password: password.value,
         }).then((res) => {
           const newRegistre = res.data;
-          // console.log(newRegistre)
           if (newRegistre.statusCode !== 200) {
             console.log(newRegistre.errorMessage);
             return;
           }
           if (newRegistre) {
-            console.log(newRegistre);
-            // console.log(newRegistre.data.userPersonalCode);
-            // urlChanger(`participant`);
+            setInterval(() => {
+              urlChanger(`${newRegistre.data.accessToken}`);
+            }, 1000);
           }
         });
       } catch (error) {
