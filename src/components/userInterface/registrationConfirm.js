@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { SiGoogleclassroom } from "react-icons/si";
-import { FaCalendarAlt } from "react-icons/fa";
+// import { SiGoogleclassroom } from "react-icons/si";
+// import { FaCalendarAlt } from "react-icons/fa";
 
 // import Api from '../../api/api';
 import CompletedIlustration from "../../assets/ilustrations/completed-pana.png";
@@ -47,33 +47,33 @@ function RegistrationConfirm(props) {
 
   // check if the code is not valid to navegate back to the registration page
   if (!loadingRegistrationHandler.validCode) {
-    return <Navigate to="/registration" />;
+    return <Navigate to='/registration' />;
   }
 
   return (
-    <UICards card_name="ui-display-card">
+    <UICards card_name='ui-display-card'>
       <img
         style={{ animation: "top-bottom-animation 2s both" }}
         className={`ilustration`}
         src={CompletedIlustration}
-        alt="Registration completed ilustration"
+        alt='Registration completed ilustration'
       />
-      <p className="normal-text">
+      <p className='normal-text'>
         Successfully registered!!!
         <br />
         Stay tunned to your email address
       </p>
-      <p className="normal-text information-text">
+      <p className='normal-text information-text'>
         <span>Personal Access Code</span> <br /> Save it for future use
       </p>
-      <p className="normal-text personal-code">{personalCode}</p>
-      <ul className="participation-links">
+      <p className='normal-text personal-code'>{personalCode}</p>
+      <ul className='participation-links'>
         <li>
           <img
             style={{ animation: "top-bottom-animation 2s both" }}
             className={`participant-icons`}
             src={GoogleClassroom}
-            alt="Google classroom icon"
+            alt='Google classroom icon'
           />
         </li>
         <li>
@@ -81,7 +81,7 @@ function RegistrationConfirm(props) {
             style={{ animation: "top-bottom-animation 2s both" }}
             className={`participant-icons`}
             src={Calendar}
-            alt="Calendar icon"
+            alt='Calendar icon'
           />
         </li>
       </ul>

@@ -6,7 +6,7 @@
   border-radius: var(--card-border-radius);
   border: 1px solid #7c7c7cc5;
   border-collapse: initial;
-  animation: bottom-top-animation 3s both ease-out;
+  /* animation: bottom-top-animation 3s both ease-out; */
 }
 
 .normal-calendar-table-header {

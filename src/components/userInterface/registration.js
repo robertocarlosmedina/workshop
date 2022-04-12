@@ -85,7 +85,7 @@ function Registration() {
           degree_type: degreeType.value,
           course_name: enrolledCourse.value,
           presential: `${
-            participationType.value == "Presential" ? true : false
+            participationType.value === "Presential" ? true : false
           }`,
         }).then((res) => {
           const newRegistre = res.data;

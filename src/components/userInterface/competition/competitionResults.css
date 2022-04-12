@@ -6,7 +6,7 @@
   width: 20%;
   padding: 1rem;
   border-radius: var(--card-border-radius);
-  animation: bottom-top-animation 3s both ease-out;
+  /* animation: bottom-top-animation 3s both ease-out; */
 }
 
 .top-three {

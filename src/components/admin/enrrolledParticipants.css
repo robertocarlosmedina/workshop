@@ -16,6 +16,8 @@
     display: inline-block;
     margin: 1rem;
     padding: 1rem;
+    min-width: 13rem;
+    box-shadow: rgba(12, 12, 12, 0.3) 0px 8px 24px;
     border-radius: var(--card-border-radius);
     background-color: var(--card-background-color-2);
 }

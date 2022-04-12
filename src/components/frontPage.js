@@ -11,7 +11,7 @@ import UTALogo from "../assets/icons/uta.png";
 
 function FrontPage() {
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 3000 });
   }, []);
 
   const [coordinators, setCoordinators] = useState([
@@ -61,9 +61,8 @@ function FrontPage() {
             </span>
             <br />
             <Link to={"/registrationPlatform"}>
-            <button className='button registration-button'>Register</button>
+              <button className='button registration-button'>Register</button>
             </Link>
-            
           </p>
         </div>
       </section>
@@ -72,6 +71,7 @@ function FrontPage() {
         <p
           className='description-session-text'
           data-aos='fade-up'
+          data-aos-duration='1000'
           data-aos-easing='ease-in-out'>
           Limited registration, register now Limited registration, register now
           Limited registration, register now Limited registration, register now
@@ -85,6 +85,7 @@ function FrontPage() {
               <li
                 data-aos='fade-up'
                 data-aos-easing='ease-in-out'
+                data-aos-duration={800 + i * 600}
                 key={i}
                 className={`coordinators-item ${i === 0 ? "firts-item" : ""}`}>
                 <div>
@@ -108,15 +109,17 @@ function FrontPage() {
         <div className='sponcer-logos'>
           <img
             data-aos='fade-up'
+            data-aos-duration='1000'
             className='sponcer-img'
-            data-aos-easing="ease-in-out"
+            data-aos-easing='ease-in-out'
             src={WascalLogo}
             alt={"Coding workshop"}
           />
           <p></p>
           <img
             data-aos='fade-up'
-            data-aos-easing="ease-in-out"
+            data-aos-duration='1600'
+            data-aos-easing='ease-in-out'
             className='sponcer-img'
             src={UTALogo}
             alt={"Coding workshop"}

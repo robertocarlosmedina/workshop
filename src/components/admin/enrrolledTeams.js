@@ -125,7 +125,6 @@ function EnrrolledTeams() {
     const teamID = parseInt(event.target.getAttribute("data-id"));
     const metricID = parseInt(event.target.getAttribute("data-metricid"));
     const value = parseFloat(event.target.value);
-    console.log(teamID, metricID, value);
     setEnrrolledTeams(
       enrrolledTeams.map((team, i) =>
         team.id === teamID
@@ -145,25 +144,27 @@ function EnrrolledTeams() {
   const gradeTeam = (event) => {
     event.preventDefault(); // Disable to form to send the request to the server and reload page
     const timeID = parseInt(event.target.getAttribute("data-id"));
-    console.log(enrrolledTeams)
-    console.log(timeID);
+    const gradedTeam = enrrolledTeams.filter((team) => {
+      return team.id === timeID;
+    });
+    console.log(gradedTeam);
   };
 
   return (
     <div>
-      <ul className="participants-display">
+      <ul className='participants-display'>
         {enrrolledTeams.map((team, i) => (
-          <li key={team.id} className="participant-element team-ajust">
-            <p className="display-team-name">{team.name}</p>
+          <li key={team.id} className='participant-element team-ajust'>
+            <p className='display-team-name'>{team.name}</p>
 
-            <div className="group-members">
-              <span className="members-tittle">Members:</span>
+            <div className='group-members'>
+              <span className='members-tittle'>Members:</span>
               {team.members.map((member, i) => (
                 <div key={member.id}>
                   <br />
-                  <span className="team-element-name">{member.name}</span>
+                  <span className='team-element-name'>{member.name}</span>
                   <br />
-                  <span className="team-element-email">{member.email}</span>
+                  <span className='team-element-email'>{member.email}</span>
                 </div>
               ))}
             </div>
@@ -172,12 +173,11 @@ function EnrrolledTeams() {
               <div
                 className={`team-grade-form ${
                   team.showGradeForm ? "show" : "hidde"
-                }`}
-              >
-                <p className="grade-title">Grade this team</p>
+                }`}>
+                <p className='grade-title'>Grade this team</p>
                 {team.gradeInfo.map((metric, i) => (
-                  <ul key={metric.metricID} className="grade-matrics">
-                    <li className="grade-matrics-item">
+                  <ul key={metric.metricID} className='grade-matrics'>
+                    <li className='grade-matrics-item'>
                       <span>{metric.metricName}</span>
                     </li>
                     <li>
@@ -185,13 +185,13 @@ function EnrrolledTeams() {
                         data-id={team.id}
                         data-metricid={metric.metricID}
                         onChange={metricGradeInputHanlder}
-                        type="number"
-                        min="0"
-                        placeholder="0.0"
-                        max="10"
-                        step=".1"
+                        type='number'
+                        min='0'
+                        placeholder='0.0'
+                        max='10'
+                        step='.1'
                         required
-                        className="grade-matrics-input"
+                        className='grade-matrics-input'
                       />{" "}
                       x {metric.metricPercentage}%
                     </li>
@@ -202,16 +202,16 @@ function EnrrolledTeams() {
               <p>
                 {team.showGradeForm && (
                   <input
-                    type="submit"
-                    className="button primary-button team-button-ajust"
+                    type='submit'
+                    className='button primary-button team-button-ajust'
                     data-id={team.id}
                     onClick={gradeTeam}
-                    value="Grade Team"
+                    value='Grade Team'
                   />
                 )}
                 <br />
                 <input
-                  type="button"
+                  type='button'
                   className={`button ${
                     team.showGradeForm ? "secundary-button" : "primary-button"
                   } team-button-ajust`}

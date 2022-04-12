@@ -29,7 +29,6 @@ function AdminDashboard(props) {
   const { accessToken } = useParams();
 
   useEffect(() => {
-    console.log(accessToken)
     try {
       Api.get(`/user_auth/authAccessToken/${accessToken}`)
       .then((res) => {
@@ -41,7 +40,6 @@ function AdminDashboard(props) {
           });
         }
         if (requestResponse) {
-          console.log(requestResponse);
           setLoadingRegistrationHandler({
             ...loadingRegistrationHandler,
             validCode: true,
