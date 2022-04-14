@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 
 import Api from '../../api/api'
 
@@ -16,7 +16,7 @@ function EnrrolledParticipants() {
 
   useEffect(() => {
     try {
-      Api.get(`/user_register/${accessToken}`).then((res) => {
+      Api.get(`/user_register/participantsInfo/${accessToken}`).then((res) => {
         const requestResponse = res.data;
         if (requestResponse.statusCode !== 200) {
           setLoadingRegistrationHandler({
@@ -24,8 +24,8 @@ function EnrrolledParticipants() {
             validCode: false,
           });
         }
-        if (requestResponse) {
-          // console.log(requestResponse);
+        if (requestResponse.statusCode === 200) {
+          console.log(requestResponse);
           setLoadingRegistrationHandler({
             ...loadingRegistrationHandler,
             validCode: true,
@@ -37,6 +37,12 @@ function EnrrolledParticipants() {
       console.log(error.message);
     }
   }, []);
+
+  // check if the code is not valid to navegate back to the registration page
+  if (!loadingRegistrationHandler.validCode) {
+    window.location.reload()
+    return <Navigate to="/admin" />;
+  }
 
   return (
     <div>

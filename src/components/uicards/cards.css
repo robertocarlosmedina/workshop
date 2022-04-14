@@ -5,6 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  transition: all .2s ease-in-out;
 }
 
 .ui-display-card {
@@ -12,7 +13,7 @@
   max-width: 50rem;
   position: relative;
   margin: min(9rem, 28vh) auto;
-  padding: 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;
@@ -25,7 +26,7 @@
   max-width: 50rem;
   position: relative;
   margin: min(15vh, 5rem) auto;
-  padding: 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;
@@ -37,7 +38,7 @@
   max-width: 18rem;
   position: relative;
   margin: 5rem auto;
-  padding: 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   background-color: var(--card-background-color-1);
   border-radius: var(--card-border-radius);
   text-align: center;
@@ -49,7 +50,7 @@
   max-width: 50rem;
   position: relative;
   margin: 11rem auto;
-  padding: 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;
@@ -60,7 +61,7 @@
   max-width: 50rem;
   position: relative;
   margin: min(15vh, 5rem) auto;
-  padding: 1rem;
+  padding: 2rem 1rem 2rem 1rem;
   border-radius: var(--card-border-radius);
   text-align: center;
   overflow: hidden;

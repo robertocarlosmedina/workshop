@@ -58,7 +58,7 @@ code {
 }
 
 .active-scroll{
-  border-bottom: 1px solid #d9e8ff2a;
+  box-shadow: rgba(12, 12, 12, 0.3) 0px 5px 9px;
 }
 
 .button:hover {

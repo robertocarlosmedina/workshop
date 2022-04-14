@@ -6,6 +6,14 @@
     font-weight: bold;
 }
 
+.team-registraion-form{
+    max-width: 20rem;
+}
+
+.team-registraion-form li p {
+    margin-top: .1rem;
+}
+
 .competition-ajust-button{
     width: 12.5rem;
     margin-left: -.3rem;

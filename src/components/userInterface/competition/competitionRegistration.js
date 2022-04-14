@@ -1,32 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import UICards from "../../uicards/uiCards";
+import Api from '../../../api/api';
 import TeamSpirit from "../../../assets/ilustrations/team-spirit-pana.png";
 
 import "./competitionRegistration.css";
 
 function CompetitionRegistration() {
-  // just an example
-  const [availableParticipants, setAvailableParticipants] = useState([
-    {
-      id: 1,
-      name: "Carlos Medina",
-    },
-    {
-      id: 2,
-      name: "Carla Santos",
-    },
-    {
-      id: 3,
-      name: "José Fortes",
-    },
-  ]);
+  const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
+    startAuthRequest: false,
+    registrationSuccess: false,
+    validCode: true,
+  });
   const [teamName, setTeamName] = useState({ value: "", valid: false });
   const [personalCode, setPersonalCode] = useState({ value: "", valid: false });
   const [teamMember, setTeamMember] = useState({
     value: "",
     valid: false,
   });
+
+  // just an example
+  const [availableParticipants, setAvailableParticipants] = useState([]);
+
+  useEffect(() => {
+    try {
+      Api.get(`/user_register/availableTeamMembers`)
+      .then((res) => {
+        const requestResponse = res.data;
+        if (requestResponse.statusCode !== 200) {
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: false,
+          });
+        }
+        if (requestResponse) {
+          setAvailableParticipants(requestResponse.data)
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: true,
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
   function validateEmptyString(string) {
     return string !== "" ? true : false;
@@ -69,7 +87,7 @@ function CompetitionRegistration() {
       />
       <p className="normal-text competition-text bold-text">Sign up your team</p>
       <form className="formulary">
-        <ul className="registration-form">
+        <ul className="registration-form team-registraion-form">
           <li className="form-item">
             <p>
               <label>
@@ -84,7 +102,7 @@ function CompetitionRegistration() {
                 teamName.valid ? "valid" : "invalid"
               }`}
               required
-              placeholder="Enter your full name"
+              placeholder="Example coders..."
             />
           </li>
           <li className="form-item">
@@ -101,7 +119,7 @@ function CompetitionRegistration() {
                 personalCode.valid ? "valid" : "invalid"
               }`}
               required
-              placeholder="example@gmail.com"
+              placeholder="Your personal code..."
             />
           </li>
           <li className="form-item">
@@ -115,7 +133,7 @@ function CompetitionRegistration() {
               className="resgistrion-input-field  selector"
             >
               {availableParticipants.map((participant, i) => (
-                <option key={i} value={participant.id}>
+                <option key={i} value={participant.participantId}>
                   {participant.name}
                 </option>
               ))}

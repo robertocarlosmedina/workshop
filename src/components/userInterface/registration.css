@@ -24,6 +24,7 @@
 
 .form-item label {
   float: left;
+  margin-bottom: .2rem;
   font-size: 0.75rem;
 }
 

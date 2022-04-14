@@ -7,7 +7,7 @@ import CompetitionResults from './competitionResults'
 // import CompetetionResults from './competitionResults'
 
 function Competition() {
-  return <CompetitionResults />;
+  return <CompetetionResistration />;
 }
 
 export default Competition;
