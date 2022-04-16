@@ -19,6 +19,10 @@
     margin-left: -.3rem;
 }
 
+.no-member-available{
+    margin-top: 2rem;
+}
+
 @media screen and (max-width: 248px) {
     .competition-ajust-button{
       width: 8.5rem;
