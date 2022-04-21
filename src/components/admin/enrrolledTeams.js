@@ -1,114 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Navigate } from "react-router-dom";
+
+import Api from '../../api/api'
 
 import "./enrrolledTeams.css";
 
 function EnrrolledTeams() {
-  const [teams, setTeams] = useState([
-    {
-      id: 1,
-      name: "Losers",
-      members: [
-        {
-          id: 3,
-          name: "Carlos Sousa",
-          email: "carlos@gmail.com",
-        },
-        {
-          id: 6,
-          name: "José Ferreira",
-          email: "Ferreira01@gmail.com",
-        },
-      ],
-      gradeInfo: [
-        {
-          metricID: 1,
-          metricName: "Code readability",
-          metricValue: 0,
-          metricPercentage: 15,
-        },
-        {
-          metricID: 2,
-          metricName: "Algorithm Efficiency",
-          metricValue: 0,
-          metricPercentage: 20,
-        },
-        {
-          metricID: 3,
-          metricName: "Completed Tasks",
-          metricValue: 0,
-          metricPercentage: 30,
-        },
-        {
-          metricID: 4,
-          metricName: "Creativity",
-          metricValue: 0,
-          metricPercentage: 5,
-        },
-        {
-          metricID: 5,
-          metricName: "Results Analysis",
-          metricValue: 0,
-          metricPercentage: 30,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Capols",
-      members: [
-        {
-          id: 1,
-          name: "Ana Maria",
-          email: "amar@gmail.com",
-        },
-        {
-          id: 2,
-          name: "Carlos Santos",
-          email: "santoscar@gmail.com",
-        },
-      ],
-      gradeInfo: [
-        {
-          metricID: 8,
-          metricName: "Code readability",
-          metricValue: 0,
-          metricPercentage: 15,
-        },
-        {
-          metricID: 20,
-          metricName: "Algorithm Efficiency",
-          metricValue: 0,
-          metricPercentage: 20,
-        },
-        {
-          metricID: 33,
-          metricName: "Completed Tasks",
-          metricValue: 0,
-          metricPercentage: 30,
-        },
-        {
-          metricID: 41,
-          metricName: "Creativity",
-          metricValue: 0,
-          metricPercentage: 5,
-        },
-        {
-          metricID: 51,
-          metricName: "Results Analysis",
-          metricValue: 0,
-          metricPercentage: 30,
-        },
-      ],
-    },
-  ]);
+  const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
+    startAuthRequest: false,
+    registrationSuccess: false,
+    validCode: true,
+  });
+  const [enrrolledTeams, setEnrrolledTeams] = useState([]);
+  const { accessToken } = useParams();
+  useEffect(() => {
+    try {
+      Api.get(`/team/allteams/${accessToken}`).then((res) => {
+        const requestResponse = res.data;
+        if (requestResponse.statusCode !== 200) {
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: false,
+          });
+        }
+        if (requestResponse.statusCode === 200) {
+          // console.log(requestResponse);
+          setLoadingRegistrationHandler({
+            ...loadingRegistrationHandler,
+            validCode: true,
+          });
+          addingShowHiddeVariable(requestResponse.data)
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
-  const addingShowHiddeVariable = () => {
-    return teams.map((team, i) => ({ ...team, showGradeForm: false }));
+  const addingShowHiddeVariable = (allTeams) => {
+    setEnrrolledTeams(allTeams.map((team) => ({ ...team, showGradeForm: false })));
   };
-
-  const [enrrolledTeams, setEnrrolledTeams] = useState(
-    addingShowHiddeVariable()
-  );
 
   const showHiddeTeamGradeForm = (event) => {
     const timeID = parseInt(event.target.getAttribute("data-id"));
@@ -141,30 +72,59 @@ function EnrrolledTeams() {
     );
   };
 
-  const gradeTeam = (event) => {
+  const gradeATeam = async (event) => {
     event.preventDefault(); // Disable to form to send the request to the server and reload page
     const timeID = parseInt(event.target.getAttribute("data-id"));
     const gradedTeam = enrrolledTeams.filter((team) => {
       return team.id === timeID;
-    });
-    console.log(gradedTeam);
+    })[0];
+    try {
+      Api.post(`/team/gradeTeam/${accessToken}`, {
+        teamID: gradedTeam.id, 
+        codeReadability: gradedTeam.gradeInfo[0].metricValue,
+        algorithmEfficiency: gradedTeam.gradeInfo[1].metricValue,
+        completedTasks: gradedTeam.gradeInfo[2].metricValue,
+        creactivity: gradedTeam.gradeInfo[3].metricValue,
+        resultAnalisys: gradedTeam.gradeInfo[4].metricValue,
+      }).then((res) => {
+        const newRegistre = res.data;
+        if (newRegistre.statusCode !== 200) {
+          return <Navigate to="/admin" />;
+        }
+        
+        if (newRegistre) {
+          console.log(newRegistre)
+          // setInterval(() => {
+          //   urlChanger(`${newRegistre.data.accessToken}`);
+          // }, 1000);
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+    // console.log(gradedTeam.gradeInfo);
   };
+
+  if (!loadingRegistrationHandler.validCode) {
+    // window.location.reload()
+    return ;
+  }
 
   return (
     <div>
-      <ul className='participants-display'>
+      <ul className="participants-display">
         {enrrolledTeams.map((team, i) => (
-          <li key={team.id} className='participant-element team-ajust'>
-            <p className='display-team-name'>{team.name}</p>
+          <li key={i} className="participant-element team-ajust">
+            <p className="display-team-name">{team.name}</p>
 
-            <div className='group-members'>
-              <span className='members-tittle'>Members:</span>
+            <div className="group-members">
+              <span className="members-tittle">Members:</span>
               {team.members.map((member, i) => (
-                <div key={member.id}>
+                <div key={i}>
                   <br />
-                  <span className='team-element-name'>{member.name}</span>
+                  <span className="team-element-name">{member.name}</span>
                   <br />
-                  <span className='team-element-email'>{member.email}</span>
+                  <span className="team-element-email">{member.email}</span>
                 </div>
               ))}
             </div>
@@ -173,11 +133,12 @@ function EnrrolledTeams() {
               <div
                 className={`team-grade-form ${
                   team.showGradeForm ? "show" : "hidde"
-                }`}>
-                <p className='grade-title'>Grade this team</p>
+                }`}
+              >
+                <p className="grade-title">Grade this team</p>
                 {team.gradeInfo.map((metric, i) => (
-                  <ul key={metric.metricID} className='grade-matrics'>
-                    <li className='grade-matrics-item'>
+                  <ul key={i} className="grade-matrics">
+                    <li className="grade-matrics-item">
                       <span>{metric.metricName}</span>
                     </li>
                     <li>
@@ -185,13 +146,13 @@ function EnrrolledTeams() {
                         data-id={team.id}
                         data-metricid={metric.metricID}
                         onChange={metricGradeInputHanlder}
-                        type='number'
-                        min='0'
-                        placeholder='0.0'
-                        max='10'
-                        step='.1'
+                        type="number"
+                        min="0"
+                        placeholder="0.0"
+                        max="10"
+                        step=".1"
                         required
-                        className='grade-matrics-input'
+                        className="grade-matrics-input"
                       />{" "}
                       x {metric.metricPercentage}%
                     </li>
@@ -202,16 +163,16 @@ function EnrrolledTeams() {
               <p>
                 {team.showGradeForm && (
                   <input
-                    type='submit'
-                    className='button primary-button team-button-ajust'
+                    type="submit"
+                    className="button primary-button team-button-ajust"
                     data-id={team.id}
-                    onClick={gradeTeam}
-                    value='Grade Team'
+                    onClick={gradeATeam}
+                    value="Grade Team"
                   />
                 )}
                 <br />
                 <input
-                  type='button'
+                  type="button"
                   className={`button ${
                     team.showGradeForm ? "secundary-button" : "primary-button"
                   } team-button-ajust`}

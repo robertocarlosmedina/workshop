@@ -5,7 +5,7 @@ import Api from '../../api/api'
 
 import "./enrrolledParticipants.css";
 
-function EnrrolledParticipants() {
+const EnrrolledParticipants = () => {
   const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
       startAuthRequest: false,
       registrationSuccess: false,
@@ -25,7 +25,7 @@ function EnrrolledParticipants() {
           });
         }
         if (requestResponse.statusCode === 200) {
-          console.log(requestResponse);
+          // console.log(requestResponse);
           setLoadingRegistrationHandler({
             ...loadingRegistrationHandler,
             validCode: true,
