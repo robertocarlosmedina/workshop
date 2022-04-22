@@ -16,7 +16,7 @@ function CompetitionRegistration() {
   const [personalCode, setPersonalCode] = useState({ value: "", valid: false });
   const [teamMember, setTeamMember] = useState({
     value: "",
-    valid: false,
+    valid: true,
   });
 
   // just an example
@@ -46,6 +46,7 @@ function CompetitionRegistration() {
   }, []);
 
   function validateEmptyString(string) {
+    console.log(string !== "" ? true : false);
     return string !== "" ? true : false;
   }
 
@@ -69,6 +70,7 @@ function CompetitionRegistration() {
   };
 
   const teamMemberFieldHandler = (event) => {
+    console.log(true);
     setTeamMember({ value: event.target.value, valid: true });
   };
 
@@ -99,54 +101,54 @@ function CompetitionRegistration() {
   };
 
   return (
-    <UICards card_name='ui-display-card'>
+    <UICards card_name="ui-display-card">
       <img
         style={{ animation: "top-bottom-animation 2s both" }}
         className={`ilustration ilustration-ajust`}
         src={TeamSpirit}
-        alt='Team spirit ilustration'
+        alt="Team spirit ilustration"
       />
-      <p className='normal-text competition-text bold-text'>
+      <p className="normal-text competition-text bold-text">
         Sign up your team
       </p>
       {availableParticipants.length > 1 && (
-        <form className='formulary'>
-          <ul className='registration-form team-registraion-form'>
-            <li className='form-item'>
+        <form className="formulary">
+          <ul className="registration-form team-registraion-form">
+            <li className="form-item">
               <p>
                 <label>
                   <span>*</span> Team Name
                 </label>
               </p>
               <input
-                type='text'
+                type="text"
                 value={teamName.value}
                 onChange={teamNameFieldHandler}
                 className={`resgistrion-input-field ${
                   teamName.valid ? "valid" : "invalid"
                 }`}
                 required
-                placeholder='Example coders...'
+                placeholder="Example coders..."
               />
             </li>
-            <li className='form-item'>
+            <li className="form-item">
               <p>
                 <label>
                   <span>*</span> Your Code
                 </label>
               </p>
               <input
-                type='text'
+                type="text"
                 value={personalCode.value}
                 onChange={personalCodeFieldHandler}
                 className={`resgistrion-input-field ${
                   personalCode.valid ? "valid" : "invalid"
                 }`}
                 required
-                placeholder='Your personal code...'
+                placeholder="Your personal code..."
               />
             </li>
-            <li className='form-item'>
+            <li className="form-item">
               <p>
                 <label>
                   <span>*</span> Your Team Member
@@ -154,7 +156,9 @@ function CompetitionRegistration() {
               </p>
               <select
                 onChange={teamMemberFieldHandler}
-                className='resgistrion-input-field  selector'>
+                className="resgistrion-input-field  selector"
+                defaultValue={availableParticipants[0].participantId}
+              >
                 {availableParticipants.map((participant, i) => (
                   <option key={i} value={participant.participantId}>
                     {participant.name}
@@ -168,13 +172,14 @@ function CompetitionRegistration() {
 
       {availableParticipants.length > 1 && (
         <button
-          className='button primary-button competition-ajust-button'
-          onClick={submitTeamRegistration}>
+          className="button primary-button competition-ajust-button"
+          onClick={submitTeamRegistration}
+        >
           Register team
         </button>
       )}
       {availableParticipants.length < 1 && (
-        <div className='no-member-available'>
+        <div className="no-member-available">
           <p>
             No members available!!
             <br />

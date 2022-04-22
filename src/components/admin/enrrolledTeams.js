@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
+import { AiOutlineFileDone } from "react-icons/ai";
 
-import Api from '../../api/api'
+import Api from "../../api/api";
 
 import "./enrrolledTeams.css";
 
@@ -29,7 +30,7 @@ function EnrrolledTeams() {
             ...loadingRegistrationHandler,
             validCode: true,
           });
-          addingShowHiddeVariable(requestResponse.data)
+          addingShowHiddeVariable(requestResponse.data);
         }
       });
     } catch (error) {
@@ -38,7 +39,9 @@ function EnrrolledTeams() {
   }, []);
 
   const addingShowHiddeVariable = (allTeams) => {
-    setEnrrolledTeams(allTeams.map((team) => ({ ...team, showGradeForm: false })));
+    setEnrrolledTeams(
+      allTeams.map((team) => ({ ...team, showGradeForm: false }))
+    );
   };
 
   const showHiddeTeamGradeForm = (event) => {
@@ -80,7 +83,7 @@ function EnrrolledTeams() {
     })[0];
     try {
       Api.post(`/team/gradeTeam/${accessToken}`, {
-        teamID: gradedTeam.id, 
+        teamID: gradedTeam.id,
         codeReadability: gradedTeam.gradeInfo[0].metricValue,
         algorithmEfficiency: gradedTeam.gradeInfo[1].metricValue,
         completedTasks: gradedTeam.gradeInfo[2].metricValue,
@@ -91,30 +94,27 @@ function EnrrolledTeams() {
         if (newRegistre.statusCode !== 200) {
           return <Navigate to="/admin" />;
         }
-        
+
         if (newRegistre) {
-          console.log(newRegistre)
-          // setInterval(() => {
-          //   urlChanger(`${newRegistre.data.accessToken}`);
-          // }, 1000);
+          // console.log(newRegistre)
+          window.location.reload();
         }
       });
     } catch (error) {
       console.log(error.message);
     }
-    // console.log(gradedTeam.gradeInfo);
   };
-
-  if (!loadingRegistrationHandler.validCode) {
-    // window.location.reload()
-    return ;
-  }
 
   return (
     <div>
       <ul className="participants-display">
         {enrrolledTeams.map((team, i) => (
           <li key={i} className="participant-element team-ajust">
+            <AiOutlineFileDone
+              className={`graded-icon ${
+                team.teamGraded ? "team-graded" : "team-not-graded"
+              }`}
+            />
             <p className="display-team-name">{team.name}</p>
 
             <div className="group-members">
@@ -153,6 +153,7 @@ function EnrrolledTeams() {
                         step=".1"
                         required
                         className="grade-matrics-input"
+                        value={metric.metricValue}
                       />{" "}
                       x {metric.metricPercentage}%
                     </li>

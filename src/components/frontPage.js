@@ -89,9 +89,8 @@ function FrontPage() {
                 key={i}
                 className={`coordinators-item ${i === 0 ? "firts-item" : ""}`}>
                 <div>
-                  <p>
+                  <p></p>
                     <div className='coordinator-img'></div>
-                  </p>
                   <p>
                     {coordinator.name} <br /> {coordinator.email}
                   </p>

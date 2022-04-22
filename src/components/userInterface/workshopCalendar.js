@@ -45,40 +45,43 @@ function WorkshopCalendar() {
   }, []);
 
   return (
-    <UICards card_name='ui-display-card'>
-      <h2 className='form-title schedule-ajust'>Workshop Schedule</h2>
-      <table className='normal-calendar-table'>
-        <thead className='normal-calendar-table-header'>
-          <th>Lesson</th>
-          <th>Date</th>
-          <th>Location</th>
-          <th>Online</th>
-          <th className='last-column'>Content</th>
+    <UICards card_name="ui-display-card">
+      <h2 className="form-title schedule-ajust">Workshop Schedule</h2>
+      <table className="normal-calendar-table">
+        <thead className="normal-calendar-table-header">
+          <tr>
+            <th>Lesson</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Online</th>
+            <th className="last-column">Content</th>
+          </tr>
         </thead>
-        <tbody className='normal-calendar-table-header-body'>
+        <tbody className="normal-calendar-table-header-body">
           {workshopSchedule.map((schedule, i) => (
             <tr
               key={i}
-              data-aos='fade-up'
-              data-aos-easing='ease-in-out'
+              data-aos="fade-up"
+              data-aos-easing="ease-in-out"
               data-aos-duration={1000 + i * 600}
               className={`normal-column ${
                 i + 1 === workshopSchedule.length ? "last-line" : ""
-              }`}>
+              }`}
+            >
               <td>{schedule.lesson}</td>
               <td>{schedule.date}</td>
               <td>{schedule.location}</td>
               <td>
-                <a href={schedule.onlineLink} target='_blank'>
+                <a href={schedule.onlineLink} target="_blank">
                   <img
                     style={{ animation: "top-bottom-animation 2s both" }}
                     className={`icon`}
                     src={HangoutsMeet}
-                    alt='Hangouts Meet icon'
+                    alt="Hangouts Meet icon"
                   />
                 </a>
               </td>
-              <td className='last-column'>{schedule.content}</td>
+              <td className="last-column">{schedule.content}</td>
             </tr>
           ))}
         </tbody>
