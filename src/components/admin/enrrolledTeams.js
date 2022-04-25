@@ -6,17 +6,17 @@ import Api from "../../api/api";
 
 import "./enrrolledTeams.css";
 
-function EnrrolledTeams() {
+function EnrrolledTeams(props) {
   const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
     startAuthRequest: false,
     registrationSuccess: false,
     validCode: true,
   });
   const [enrrolledTeams, setEnrrolledTeams] = useState([]);
-  const { accessToken } = useParams();
+
   useEffect(() => {
     try {
-      Api.get(`/team/allteams/${accessToken}`).then((res) => {
+      Api.get(`/team/allteams/${props.accessToken}`).then((res) => {
         const requestResponse = res.data;
         if (requestResponse.statusCode !== 200) {
           setLoadingRegistrationHandler({
@@ -37,6 +37,11 @@ function EnrrolledTeams() {
       console.log(error.message);
     }
   }, []);
+
+  // check if the code is not valid to navegate back to the registration page
+  if (!loadingRegistrationHandler.validCode) {
+    props.setAccessToken("")
+  }
 
   const addingShowHiddeVariable = (allTeams) => {
     setEnrrolledTeams(
@@ -81,8 +86,9 @@ function EnrrolledTeams() {
     const gradedTeam = enrrolledTeams.filter((team) => {
       return team.id === timeID;
     })[0];
+    console.log(gradedTeam);
     try {
-      Api.post(`/team/gradeTeam/${accessToken}`, {
+      Api.post(`/team/gradeTeam/${props.accessToken}`, {
         teamID: gradedTeam.id,
         codeReadability: gradedTeam.gradeInfo[0].metricValue,
         algorithmEfficiency: gradedTeam.gradeInfo[1].metricValue,
@@ -90,13 +96,14 @@ function EnrrolledTeams() {
         creactivity: gradedTeam.gradeInfo[3].metricValue,
         resultAnalisys: gradedTeam.gradeInfo[4].metricValue,
       }).then((res) => {
+        console.log(res.data);
         const newRegistre = res.data;
         if (newRegistre.statusCode !== 200) {
-          return <Navigate to="/admin" />;
+          props.setAccessToken("")
         }
 
         if (newRegistre) {
-          // console.log(newRegistre)
+          console.log(newRegistre);
           window.location.reload();
         }
       });
@@ -142,19 +149,36 @@ function EnrrolledTeams() {
                       <span>{metric.metricName}</span>
                     </li>
                     <li>
-                      <input
-                        data-id={team.id}
-                        data-metricid={metric.metricID}
-                        onChange={metricGradeInputHanlder}
-                        type="number"
-                        min="0"
-                        placeholder="0.0"
-                        max="10"
-                        step=".1"
-                        required
-                        className="grade-matrics-input"
-                        value={metric.metricValue}
-                      />{" "}
+                      {!team.teamGraded ? (
+                        <input
+                          data-id={team.id}
+                          data-metricid={metric.metricID}
+                          onChange={metricGradeInputHanlder}
+                          type="number"
+                          min="0"
+                          placeholder="0.0"
+                          max="10"
+                          step=".1"
+                          required
+                          className="grade-matrics-input"
+                          value={metric.metricValue}
+                        />
+                      ) : (
+                        <input
+                          data-id={team.id}
+                          data-metricid={metric.metricID}
+                          onChange={metricGradeInputHanlder}
+                          type="number"
+                          min="0"
+                          placeholder="0.0"
+                          max="10"
+                          step=".1"
+                          required
+                          readOnly
+                          className="grade-matrics-input"
+                          value={metric.metricValue}
+                        />
+                      )}{" "}
                       x {metric.metricPercentage}%
                     </li>
                   </ul>
@@ -162,7 +186,7 @@ function EnrrolledTeams() {
               </div>
 
               <p>
-                {team.showGradeForm && (
+                {team.showGradeForm && !team.teamGraded && (
                   <input
                     type="submit"
                     className="button primary-button team-button-ajust"

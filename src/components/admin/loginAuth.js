@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { Navigate } from 'react-router-dom'
 import Api from "../../api/api";
 
 import UICards from "../uicards/uiCards";
 
 import "./loginAuth.css";
 
-function LoginAuth() {
-  const urlChanger = useNavigate();
+function LoginAuth(props) {
   const [email, setEmail] = useState({ value: "", valid: false });
   const [password, setPassword] = useState({ value: "", valid: false });
 
@@ -41,7 +40,7 @@ function LoginAuth() {
           }
           if (newRegistre) {
             setInterval(() => {
-              urlChanger(`${newRegistre.data.accessToken}`);
+              props.setAccessToken(newRegistre.data.accessToken)
             }, 1000);
           }
         });
@@ -49,6 +48,10 @@ function LoginAuth() {
         console.log(error.message);
       }
     }
+  }
+
+  if(props.accessToken !== ""){
+    return <Navigate to="/admin/dashboard"/>
   }
 
   return (

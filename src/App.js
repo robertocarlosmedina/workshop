@@ -15,6 +15,7 @@ import LoginAuth from "./components/admin/loginAuth";
 import UrlError404 from "./components/urlError404";
 
 function App() {
+  const [accessToken, setAccessToken] = useState("")
   const location = useLocation()
   const [showBorder, setShowBorder] = useState(false)
 
@@ -48,8 +49,8 @@ function App() {
         <Route exact path={"/participant/"} element={<RegistrationConfirm />} />
         <Route exact path={"/competition"} element={<Competition />} />
         <Route exact path={"/calendar"} element={<WorkshopCalendar />} />
-        <Route exact path={"/admin"} element={<LoginAuth />} />
-        <Route exact path={"/admin/:accessToken"} element={<AdminDashboard />} />
+        <Route exact path={"/admin"}  element={<LoginAuth accessToken={accessToken} setAccessToken={setAccessToken}/>} />
+        <Route exact path={"/admin/dashboard"} element={<AdminDashboard accessToken={accessToken} setAccessToken={setAccessToken} />} />
         <Route exact path="*" element={<UrlError404 />} />
       </Routes>
       {location.pathname !== "/" && <UICards card_name={`${ showBorder ? "header-card active-scroll" : "header-card"}`}>

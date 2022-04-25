@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
 
 import Api from '../../api/api'
 
 import "./enrrolledParticipants.css";
 
-const EnrrolledParticipants = () => {
+const EnrrolledParticipants = (props) => {
   const [loadingRegistrationHandler, setLoadingRegistrationHandler] = useState({
       startAuthRequest: false,
       registrationSuccess: false,
       validCode: true,
     });
   const [allParticipants, setallParticipants] = useState([]);
-  const { accessToken } = useParams();
 
   useEffect(() => {
     try {
-      Api.get(`/user_register/participantsInfo/${accessToken}`).then((res) => {
+      Api.get(`/user_register/participantsInfo/${props.accessToken}`).then((res) => {
         const requestResponse = res.data;
         if (requestResponse.statusCode !== 200) {
           setLoadingRegistrationHandler({
@@ -40,8 +38,7 @@ const EnrrolledParticipants = () => {
 
   // check if the code is not valid to navegate back to the registration page
   if (!loadingRegistrationHandler.validCode) {
-    window.location.reload()
-    return <Navigate to="/admin" />;
+    props.setAccessToken("")
   }
 
   return (

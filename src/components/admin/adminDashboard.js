@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 
 import UICards from "../uicards/uiCards";
-import EnrrolledParticipants from './enrrolledParticipants'
-import EnrrolledTeams from './enrrolledTeams'
-import Api from '../../api/api'
+import EnrrolledParticipants from "./enrrolledParticipants";
+import EnrrolledTeams from "./enrrolledTeams";
+import Api from "../../api/api";
 
 import "./adminDashboard.css";
 
@@ -18,43 +18,52 @@ function AdminDashboard(props) {
     {
       name: "Teams",
       state: true,
-      Component: EnrrolledTeams
+      Component: EnrrolledTeams,
     },
     {
       name: "Participants",
       state: false,
-      Component: EnrrolledParticipants
+      Component: EnrrolledParticipants,
     },
   ]);
-  const { accessToken } = useParams();
 
   useEffect(() => {
-    try {
-      Api.get(`/user_auth/authAccessToken/${accessToken}`)
-      .then((res) => {
-        const requestResponse = res.data;
-        if (requestResponse.statusCode !== 200) {
-          setLoadingRegistrationHandler({
-            ...loadingRegistrationHandler,
-            validCode: false,
-          });
-        }
-        if (requestResponse) {
-          setLoadingRegistrationHandler({
-            ...loadingRegistrationHandler,
-            validCode: true,
-          });
-        }
-      });
-    } catch (error) {
-      console.log(error.message);
+    if (props.accessToken !== "") {
+      try {
+        Api.get(`/user_auth/authAccessToken/${props.accessToken}`).then(
+          (res) => {
+            const requestResponse = res.data;
+            if (requestResponse.statusCode !== 200) {
+              setLoadingRegistrationHandler({
+                ...loadingRegistrationHandler,
+                validCode: false,
+              });
+            }
+            if (requestResponse) {
+              setLoadingRegistrationHandler({
+                ...loadingRegistrationHandler,
+                validCode: true,
+              });
+            }
+          }
+        );
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   }, []);
 
   // check if the code is not valid to navegate back to the registration page
-  if (!loadingRegistrationHandler.validCode) {
+  if (!loadingRegistrationHandler.validCode || props.accessToken === "") {
     return <Navigate to="/admin" />;
   }
+
+  const defaulAccessToken = () => {
+    setInterval(() => {
+      props.setAccessToken("");
+      window.location.reload();
+    }, 1000);
+  };
 
   const navegateInSubMenu = (event) => {
     const subMenuIndex = subMenu.findIndex(
@@ -70,29 +79,35 @@ function AdminDashboard(props) {
   };
   return (
     <div>
-      <div className='sub-menu'>
-        <nav >
-          <ul className='admin-sub-menu'>
-            <h2 className='form-title'>Admin Dashboard</h2>
+      <div className="sub-menu">
+        <nav>
+          <ul className="admin-sub-menu">
+            <h2 className="form-title">Admin Dashboard</h2>
             {subMenu.map((element, i) => (
               <li
                 key={i}
                 className={`sub-menu-items normal-text ${
                   element.state ? "active-menu" : ""
                 }`}
-                onClick={navegateInSubMenu}>
+                onClick={navegateInSubMenu}
+              >
                 {element.name}
               </li>
             ))}
           </ul>
         </nav>
       </div>
-      <UICards card_name='ui-display-card-background-null'>
-        {subMenu.map((option, i) =>
+      <UICards card_name="ui-display-card-background-null">
+        {subMenu.map((option, i) => (
           <div key={i}>
-            {option.state && <option.Component ></option.Component>}
+            {option.state && (
+              <option.Component
+                accessToken={props.accessToken}
+                setAccessToken={defaulAccessToken}
+              />
+            )}
           </div>
-        )}
+        ))}
       </UICards>
     </div>
   );
